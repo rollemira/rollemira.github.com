@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Archives: 4/2009 - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/archives/2009/04/"/>
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.min.css">
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+    
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/css/ie8.min.css">
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+</head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a href="/archives/page/2">Archives</a></li>
+      
+      <li><a href="https://github.com/rollemira/rollemira.github.com/issues/new">Contact</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          2009-04-27
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/">The HttpWebRequest and Using Client Certificates</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So you may have found yourself in a similar situation, needing to make a TCP/IP request to a 3rd party API possibly using SSL. Well, that is a quite simple task. It can however, be complicated if this 3rd party requires the use of certificates for communication to its API server. I found myself in some sort of certificate hell where I had the certificate, added it to the request and somehow it still wasn’t working. If you know what I’m talking about and had as many hurdles as I did, my condolences to you. I will try to explain in this article how I started, the problems I ran into and then the overall solution that ended up working for me. </p>
+<p>To start with, you should have some kind of certificate. Most likely a <em>.pfx or </em>.p12 file. This can also come with a private key or password for the certificate’s encryption. This is what a standard WebRequest over SSL might look like:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetData</span>(<span class="params"><span class="keyword">string</span> inputData</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="comment">//will hold the result</span></div><div class="line">    <span class="keyword">string</span> result = <span class="keyword">string</span>.Empty;</div><div class="line">    <span class="comment">//build the request object</span></div><div class="line">    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(<span class="string">"https://someapi.com/"</span>);</div><div class="line">    <span class="comment">//write the input data (aka post) to a byte array</span></div><div class="line">    <span class="keyword">byte</span>[] requestBytes = <span class="keyword">new</span> ASCIIEncoding().GetBytes(inputData);</div><div class="line">    <span class="comment">//get the request stream to write the post to</span></div><div class="line">    Stream requestStream = request.GetRequestStream();</div><div class="line">    <span class="comment">//write the post to the request stream</span></div><div class="line">    requestStream.Write(requestBytes, <span class="number">0</span>, requestBytes.Length);</div><div class="line">    <span class="comment">//build a response object to hold the response</span></div><div class="line">    <span class="comment">//submit the request by calling get response</span></div><div class="line">    HttpWebResponse response = (HttpWebResponse)request.GetResponse();</div><div class="line">    <span class="comment">//get the response stream to read the response from</span></div><div class="line">    Stream responseStream = response.GetResponseStream();</div><div class="line">    <span class="comment">//now read it out to our result</span></div><div class="line">    <span class="keyword">using</span> (StreamReader rdr = <span class="keyword">new</span> StreamReader(responseStream))</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//set the result to the contents of the stream</span></div><div class="line">        result = rdr.ReadToEnd();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//return</span></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>The example above is missing the portion where you add the certificate to the request. You may receive a 403 Forbidden error from the server if a certificate is required to make the request to the API server. A simple way of adding a certificate to the request would be like so:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//add certificate to the request</span></div><div class="line">request.ClientCertificates.Add(<span class="keyword">new</span> X509Certificate(<span class="string">@"C:\certs\Some Cert.p12"</span>, <span class="string">@"SecretP@$$w0rd"</span>));</div></pre></td></tr></table></figure></p>
+<p>The X509Certificate class is found in the System.Security.Cryptography.X509Certificates namespace. Simply add a new certificate to the client certificates before calling for the response, and it <strong>should</strong> be sent with the request. However, you may encounter an exception with the message “The system cannot find the file specified”. I encountered this error after I got the application off my local machine and onto the development server. After doing some research I stumbled upon this <a href="http://support.microsoft.com/kb/948154" target="_blank" rel="external">kb article</a>. This article opened my eyes to how using certificates is a little more complicated than I initially thought. Turns out the problem was that the user trying to access the certificate does not have a profile loaded.</p>
+<p>After stepping through the article, installing the certificate to the local machine’s personal certificate store, and then granting rights to the certificate using the <a href="http://www.microsoft.com/downloads/details.aspx?familyid=c42e27ac-3409-40e9-8667-c748e422833f&amp;displaylang=en" target="_blank" rel="external">WinHttpCertCfg.exe</a> tool, and putting in a little more code found in the kb article, I was well on my way. The article describes how to use C# to open a certificate store and use the certificate directly out of the store. This presents a bit more elegant, and in my opinion more secure, way of getting to and using the certificate.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//add it in a better way</span></div><div class="line">X509Store certStore = <span class="keyword">new</span> X509Store(<span class="string">"My"</span>, StoreLocation.LocalMachine);</div><div class="line">certStore.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);</div><div class="line">X509Certificate2 cert = certStore.Certificates.Find(X509FindType.FindBySubjectName, <span class="string">"My cert subject"</span>, <span class="literal">false</span>)[<span class="number">0</span>];</div><div class="line">certStore.Close();</div><div class="line">request.ClientCertificates.Add(cert);</div></pre></td></tr></table></figure></p>
+<p>This method will not only give access to the certificate regardless of having a loaded profile, but it also takes the certificate’s private key password out of the code and/or configuration. This snippet above took me out of the certificate hell that was crushing my life for a couple days! </p>
+<p>Putting it all together:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetData</span>(<span class="params"><span class="keyword">string</span> inputData</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="comment">//will hold the result</span></div><div class="line">    <span class="keyword">string</span> result = <span class="keyword">string</span>.Empty;</div><div class="line">    <span class="comment">//build the request object</span></div><div class="line">    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(<span class="string">"https://someapi.com/"</span>);</div><div class="line">    <span class="comment">//add certificate to the request</span></div><div class="line">    <span class="comment">//request.ClientCertificates.Add(new X509Certificate(@"C:\certs\Some Cert.p12", @"SecretP@$$w0rd"));</span></div><div class="line">    <span class="comment">//add it in a better way</span></div><div class="line">    X509Store certStore = <span class="keyword">new</span> X509Store(<span class="string">"My"</span>, StoreLocation.LocalMachine);</div><div class="line">    certStore.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);</div><div class="line">    X509Certificate2 cert = certStore.Certificates.Find(X509FindType.FindBySubjectName, <span class="string">"My cert subject"</span>, <span class="literal">false</span>)[<span class="number">0</span>];</div><div class="line">    certStore.Close();</div><div class="line">    request.ClientCertificates.Add(cert);</div><div class="line">    <span class="comment">//write the input data (aka post) to a byte array</span></div><div class="line">    <span class="keyword">byte</span>[] requestBytes = <span class="keyword">new</span> ASCIIEncoding().GetBytes(inputData);</div><div class="line">    <span class="comment">//get the request stream to write the post to</span></div><div class="line">    Stream requestStream = request.GetRequestStream();</div><div class="line">    <span class="comment">//write the post to the request stream</span></div><div class="line">    requestStream.Write(requestBytes, <span class="number">0</span>, requestBytes.Length);</div><div class="line">    <span class="comment">//build a response object to hold the response</span></div><div class="line">    <span class="comment">//submit the request by calling get response</span></div><div class="line">    HttpWebResponse response = (HttpWebResponse)request.GetResponse();</div><div class="line">    <span class="comment">//get the response stream to read the response from</span></div><div class="line">    Stream responseStream = response.GetResponseStream();</div><div class="line">    <span class="comment">//now read it out to our result</span></div><div class="line">    <span class="keyword">using</span> (StreamReader rdr = <span class="keyword">new</span> StreamReader(responseStream))</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//set the result to the contents of the stream</span></div><div class="line">        result = rdr.ReadToEnd();</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//return</span></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/c/" class="button small">c#</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          2009-04-12
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/">Finding Text in SQL Server Stored Procedures</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So, I’m sure you have been met with a similar scenario during development. You know the one that you have to rename a column or even drop a column in the database. This can be quite annoying if you are doing stored procedure based data access for your application. Once you change the column on the table, you have to figure out which stored procedures reference the column. They aren’t always tough to find most of the time, but sometimes you are dealing with a column that may be referenced in many stored procedures. Well thanks to my boss Cliff’s research and knowledge sharing, your search can be as easy as ours!</p>
+<p>The query:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">USE</span> Northwind</div><div class="line"><span class="keyword">GO</span> </div><div class="line"><span class="keyword">DECLARE</span> @SearchText <span class="keyword">AS</span> <span class="built_in">VARCHAR</span>(<span class="number">50</span>)</div><div class="line"><span class="keyword">SET</span> @SearchText = <span class="string">'CustomerID'</span></div><div class="line"></div><div class="line"><span class="keyword">SELECT</span></div><div class="line">ROUTINE_NAME,</div><div class="line">ROUTINE_DEFINITION</div><div class="line"><span class="keyword">FROM</span> INFORMATION_SCHEMA.ROUTINES</div><div class="line"><span class="keyword">WHERE</span> ROUTINE_NAME <span class="keyword">LIKE</span> <span class="string">'%'</span> + @SearchText + <span class="string">'%'</span></div><div class="line"><span class="keyword">OR</span> ROUTINE_DEFINITION <span class="keyword">LIKE</span> <span class="string">'%'</span> + @SearchText + <span class="string">'%'</span></div></pre></td></tr></table></figure></p>
+<p>This query will return all the names and routine definitions of stored procedures that contain certain text. It is not really bound by column names but I needed a true development scenario. Run the query with what you are looking for and presto! All the stored procedures you will need to modify.</p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/sql/" class="button small">sql</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="http://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+                <li><a href="http://www.twitter.com/rollemira" class="icon fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+            
+            
+            
+            
+            
+                <li><a href="http://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="http://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+                <li><a href="http://www.bitbucket.org/rollemira" class="icon fa-bitbucket" target="_blank" ><span class="label">BitBucket</span></a></li>
+            
+            
+            
+                <li><a href="http://feed.iramellor.com/iramellor" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+<script src="/js/jquery.min.js"></script><script src="/js/jquery.poptrox.min.js"></script><script src="/js/typeahead.min.js"></script><script src="/js/skel.min.js"></script><script src="/js/util.min.js"></script>
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<script src="/js/main.min.js"></script>
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/count.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>
