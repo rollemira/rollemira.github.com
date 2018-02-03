@@ -68,13 +68,13 @@
     </summary>
     
     
+      <category term="development" scheme="https://iramellor.com/tags/development/"/>
+    
       <category term="nodejs" scheme="https://iramellor.com/tags/nodejs/"/>
     
       <category term="mongodb" scheme="https://iramellor.com/tags/mongodb/"/>
     
       <category term="angular" scheme="https://iramellor.com/tags/angular/"/>
-    
-      <category term="development" scheme="https://iramellor.com/tags/development/"/>
     
   </entry>
   
@@ -105,9 +105,9 @@
     </summary>
     
     
-      <category term="development" scheme="https://iramellor.com/tags/development/"/>
-    
       <category term="azure" scheme="https://iramellor.com/tags/azure/"/>
+    
+      <category term="development" scheme="https://iramellor.com/tags/development/"/>
     
   </entry>
   
@@ -173,9 +173,9 @@
     </summary>
     
     
-      <category term="development" scheme="https://iramellor.com/tags/development/"/>
-    
       <category term="general" scheme="https://iramellor.com/tags/general/"/>
+    
+      <category term="development" scheme="https://iramellor.com/tags/development/"/>
     
   </entry>
   
@@ -216,9 +216,9 @@
     </summary>
     
     
-      <category term="development" scheme="https://iramellor.com/tags/development/"/>
-    
       <category term="general" scheme="https://iramellor.com/tags/general/"/>
+    
+      <category term="development" scheme="https://iramellor.com/tags/development/"/>
     
   </entry>
   

@@ -844,6 +844,7 @@ em {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid #464647;
+    overflow: hidden;
 }
 
 .recent-tweets li p {
