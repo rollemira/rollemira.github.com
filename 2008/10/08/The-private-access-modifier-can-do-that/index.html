@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://iramellor.com/2008/10/08/The-private-access-modifier-can-do-that/"/>
+<link rel="canonical" href="https://iramellor.com/2008/10/08/The-private-access-modifier-can-do-that/">
 <!--Author-->
 
 <meta name="author" content="Ira Mellor">
@@ -39,9 +39,9 @@
 <link rel="stylesheet" href="/css/YTPlayer.min.css">
 <link rel="stylesheet" href="/css/magnific-popup.min.css">
 <link rel="stylesheet" href="/css/highlight.min.css">
-<link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -117,7 +117,7 @@ if (!window.isRunningLocal) {
                 </li>
                 
                 <li>
-                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="external">Contact</a>
+                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="noopener">Contact</a>
                 </li>
                 
             </ul>
@@ -170,15 +170,15 @@ if (!window.isRunningLocal) {
         <article id="post">
   <section class="meta">
     <h6>Published: 10/08/2008</h6>
-  </section><br />
+  </section><br>
   <!--<section class="page-head">
       <h1>
         The Private Access Modifier Can Do That?
       </h1>
   </section>-->
   <section class="page-content">
-    <p>If you look up accessibility levels on the <a href="http://msdn.microsoft.com/en-us/library/ba0a1yw2%28VS.80%29.aspx" target="_blank" rel="external">MSDN web site, it will tell you that the accessibility of the private access modifier is limited to the containing type</a>. I ran into an instance that showed me the direct meaning of this statement. The scenario I had was this: I wanted to have the ability to make an object read only. That is the original object however, if a clone was made then the object could be modified again because it wasn’t the original object. Of course this is a simple task, we get to go back and visit my good friend ICloneable.</p>
-<p>So we start off by making our data object, putting in the ability to mark it read only and giving it the ability to clone itself.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Lion</span> : <span class="title">ICloneable</span></div><div class="line">&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span>(<span class="params"></span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">this</span>.Name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">bool</span> _isReadOnly;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> IsReadOnly</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _isReadOnly; &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">string</span> _name;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _name; &#125;</div><div class="line">        <span class="keyword">set</span> </div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (_isReadOnly)</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ReadOnlyException(<span class="string">"This object is read only"</span>);</div><div class="line">            _name = <span class="keyword">value</span>; </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MakeReadOnly</span>(<span class="params"></span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        _isReadOnly = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">#<span class="meta-keyword">region</span> ICloneable Members</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Lion <span class="title">Clone</span>(<span class="params"></span>)</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Lion result = (Lion)((ICloneable)<span class="keyword">this</span>).Clone();</div><div class="line">        result._isReadOnly = <span class="literal">false</span>;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">object</span> ICloneable.Clone()</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <p>If you look up accessibility levels on the <a href="http://msdn.microsoft.com/en-us/library/ba0a1yw2%28VS.80%29.aspx" target="_blank" rel="noopener">MSDN web site, it will tell you that the accessibility of the private access modifier is limited to the containing type</a>. I ran into an instance that showed me the direct meaning of this statement. The scenario I had was this: I wanted to have the ability to make an object read only. That is the original object however, if a clone was made then the object could be modified again because it wasn’t the original object. Of course this is a simple task, we get to go back and visit my good friend ICloneable.</p>
+<p>So we start off by making our data object, putting in the ability to mark it read only and giving it the ability to clone itself.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Lion</span> : <span class="title">ICloneable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Lion</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.Name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">bool</span> _isReadOnly;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">bool</span> IsReadOnly</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _isReadOnly; &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">string</span> _name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> _name; &#125;</span><br><span class="line">        <span class="keyword">set</span> </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (_isReadOnly)</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ReadOnlyException(<span class="string">"This object is read only"</span>);</span><br><span class="line">            _name = <span class="keyword">value</span>; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">MakeReadOnly</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        _isReadOnly = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">region</span> ICloneable Members</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Lion <span class="title">Clone</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Lion result = (Lion)((ICloneable)<span class="keyword">this</span>).Clone();</span><br><span class="line">        result._isReadOnly = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">object</span> ICloneable.Clone()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.MemberwiseClone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Take a look at line #43 above. During the cloning process, you can set the private variable _isReadOnly on the newly cloned object! </p>
 <p>For some reason, I was under the impression that any and all private fields and methods were private to that instance of the object. This would mean that all private members of the cloned object would have to be called in the cloned object. To my surprise, this is not the case at all. After changing the _isReadOnly field of the cloned object, the object that was cloned will still remain read only. The cloned object will remain editable until the MakeReadOnly() method is called on it.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>All fields and methods with the private access modifier are exposed at any time as long as you are in the containing type. The implications of this are that if you clone an object you will have access to the private members of the newly created object. This can be extremely useful, especially if you want a specific action to be performed on a cloned object but you don’t want to explicitly call that action publicly.</p>
@@ -186,18 +186,17 @@ if (!window.isRunningLocal) {
 
   </section>
 </article>
-<br />
+<br>
 
 <h6>Tags:</h6>
 <div class="tags">
     <a href="/tags/code/" class="btn btn-default btn-xs">code</a> <a href="/tags/net/" class="btn btn-default btn-xs">.net</a> <a href="/tags/c/" class="btn btn-default btn-xs">c#</a>
 </div>
-<br />
+<br>
 <h6>More posts:</h6>
 <nav id="pagination">
   
-    <a href="/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/"
-      title="SQL Server Side Paging With a Validated Dynamic Order By" class="prev">
+    <a href="/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/" title="SQL Server Side Paging With a Validated Dynamic Order By" class="prev">
       <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;SQL Server Side Paging With a Validated Dynamic Order By
     </a>&nbsp;
   
@@ -205,23 +204,22 @@ if (!window.isRunningLocal) {
   
 
   
-    &nbsp;<a href="/2008/09/23/ASP-NET-Ajax-JQuery-JSON-Date-Serialization/"
-      title="ASP.NET Ajax, JQuery &amp; JSON Date Serialization" class="next">
+    &nbsp;<a href="/2008/09/23/ASP-NET-Ajax-JQuery-JSON-Date-Serialization/" title="ASP.NET Ajax, JQuery &amp; JSON Date Serialization" class="next">
       ASP.NET Ajax, JQuery &amp; JSON Date Serialization&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
     </a>
   
 </nav>
 
-<br />
+<br>
 
-    <hr />
+    <hr>
     <h2>Comments:</h2>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
-<br/><br/>
+<br><br>
     </div>
 </section>
 <!--inner page content-->
@@ -233,7 +231,7 @@ if (!window.isRunningLocal) {
             <div class="col-md-4">
                 <div class="footer-col author">
                     <h3 class="widget-title">The Author</h3>
-                    <img src='https://www.gravatar.com/avatar/73615cfff4eaf47dfd2ebc85c0d826ef?s=75' alt='Ira Mellor' />
+                    <img src="https://www.gravatar.com/avatar/73615cfff4eaf47dfd2ebc85c0d826ef?s=75" alt="Ira Mellor">
                     <p class="author-name">
                         Ira Mellor
                     </p>
@@ -250,28 +248,28 @@ if (!window.isRunningLocal) {
                     <ul class="list-inline social-1">
                         
                         <li>
-                        <a href="http://www.linkedin.com/in/iramellor" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on LinkedIn" target="_blank">
+                        <a href="http://www.linkedin.com/in/iramellor" data-toggle="tooltip" title data-placement="top" data-original-title="See me on LinkedIn" target="_blank">
                             <i class="fa fa-linkedin"></i>
                         </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://www.github.com/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on Github" target="_blank">
+                            <a href="http://www.github.com/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on Github" target="_blank">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://www.bitbucket.org/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on BitBucket" target="_blank">
+                            <a href="http://www.bitbucket.org/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on BitBucket" target="_blank">
                                 <i class="fa fa-bitbucket"></i>
                             </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://stackoverflow.com/users/87734/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on StackOverflow" target="_blank">
+                            <a href="http://stackoverflow.com/users/87734/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on StackOverflow" target="_blank">
                                 <i class="fa fa-stack-overflow"></i>
                             </a>
                         </li>
@@ -279,7 +277,7 @@ if (!window.isRunningLocal) {
                         
                         <li>
                             
-                        <a href="https://iramellor.com/atom.xml" data-toggle="tooltip" title="" data-placement="top" data-original-title="Subscribe to my feed" target="_blank">
+                        <a href="https://iramellor.com/atom.xml" data-toggle="tooltip" title data-placement="top" data-original-title="Subscribe to my feed" target="_blank">
                             <i class="fa fa-feed"></i>
                         </a>
                         </li>
@@ -303,6 +301,13 @@ if (!window.isRunningLocal) {
                         
 
   <section id="recent-posts">
+    
+      <article class="archive-item">
+    <a href="/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/" title="Oracle Public Cloud Instance Information Collector">Oracle Public Cloud Instance Information Collector</a>
+        <time datetime="2019-03-26T13:00:00.000Z">
+            03/26/2019
+        </time>
+</article>
     
       <article class="archive-item">
     <a href="/2017/08/09/Task-Running-Windows-Service-in-NET/" title="Task Running Windows Service in .NET">Task Running Windows Service in .NET</a>
@@ -329,13 +334,6 @@ if (!window.isRunningLocal) {
     <a href="/2016/11/18/WooCommerce-API-Using-RestSharp-over-HTTP-with-OAuth/" title="WooCommerce API Using RestSharp Over HTTP With OAuth">WooCommerce API Using RestSharp Over HTTP With OAuth</a>
         <time datetime="2016-11-18T20:12:52.000Z">
             11/18/2016
-        </time>
-</article>
-    
-      <article class="archive-item">
-    <a href="/2016/11/17/The-Developer-s-Feed/" title="The Developer's Feed">The Developer's Feed</a>
-        <time datetime="2016-11-18T00:28:43.000Z">
-            11/17/2016
         </time>
 </article>
     
@@ -370,7 +368,7 @@ if (!window.isRunningLocal) {
                 </li>
                 
                 <li>
-                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="external">Contact</a>
+                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="noopener">Contact</a>
                 </li>
                 
                 <li>
@@ -379,7 +377,7 @@ if (!window.isRunningLocal) {
                 
             </ul>
             <div class="footer-privacy-text">
-                Copyright &copy;2018 <a href="#">Ira Mellor</a> Hosted by <a href="https://github.com" target="_blank">GitHub</a> in 
+                Copyright &copy;2019 <a href="#">Ira Mellor</a> Hosted by <a href="https://github.com" target="_blank">GitHub</a> in 
                 <a href="https://github.com/rollemira/rollemira.github.com" target="_blank">this repository</a>. Site generated using 
                 <a href="https://hexo.io" target="_blank">Hexo</a>.
             </div>

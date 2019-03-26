@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+
     <url>
         <loc>https://iramellor.com/tags/deployment/</loc>
         <lastmod>2017-08-03T00:25:03.825Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://iramellor.com/tags/azure/</loc>
-        <lastmod>2017-08-03T00:25:03.826Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -72,13 +66,6 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/tags/nodejs/</loc>
-        <lastmod>2017-08-11T14:29:37.377Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://iramellor.com/tags/mongodb/</loc>
         <lastmod>2017-08-11T14:29:37.377Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -93,15 +80,29 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/tags/development/</loc>
+        <loc>https://iramellor.com/tags/net/</loc>
         <lastmod>2017-08-11T14:29:37.378Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://iramellor.com/tags/net/</loc>
-        <lastmod>2017-08-11T14:29:37.378Z</lastmod>
+        <loc>https://iramellor.com/tags/azure/</loc>
+        <lastmod>2018-07-06T23:08:14.560Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://iramellor.com/tags/development/</loc>
+        <lastmod>2019-03-26T21:33:33.279Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://iramellor.com/tags/nodejs/</loc>
+        <lastmod>2019-03-26T21:33:33.279Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

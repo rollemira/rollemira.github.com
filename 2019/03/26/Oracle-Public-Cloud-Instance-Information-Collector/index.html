@@ -7,14 +7,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://iramellor.com/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/">
+<link rel="canonical" href="https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/">
 <!--Author-->
 
 <meta name="author" content="Ira Mellor">
 
 <!--Description-->
 
-<meta name="description" content="So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts ">
+<meta name="description" content="The PrefaceIn my time with Oracle, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers t">
 
 <!--Favicon-->
 
@@ -22,13 +22,13 @@
 
 <!--Open Graph Title-->
 
-<meta property="og:title" content="Avoiding the Database Deployment Nightmare">
+<meta property="og:title" content="Oracle Public Cloud Instance Information Collector">
 
 <!--Open Graph Site Name-->
 <meta property="og:site_name" content="Ira Mellor (dot) Com">
 <!--Page Cover-->
 
-<title>Avoiding the Database Deployment Nightmare - Ira Mellor (dot) Com</title>
+<title>Oracle Public Cloud Instance Information Collector - Ira Mellor (dot) Com</title>
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/style.min.css">
 <link rel="stylesheet" href="/fonts/css/font-awesome.min.css">
@@ -159,7 +159,7 @@ if (!window.isRunningLocal) {
 <section id="page-header" class="blog-banner parallax" data-stellar-background-ratio="0.5">
     <div class="container">
         
-        <h1>Avoiding the Database Deployment Nightmare</h1>
+        <h1>Oracle Public Cloud Instance Information Collector</h1>
         
     </div>
 </section>
@@ -169,49 +169,37 @@ if (!window.isRunningLocal) {
     <div class="container">
         <article id="post">
   <section class="meta">
-    <h6>Published: 06/18/2009</h6>
+    <h6>Published: 03/26/2019</h6>
   </section><br>
   <!--<section class="page-head">
       <h1>
-        Avoiding the Database Deployment Nightmare
+        Oracle Public Cloud Instance Information Collector
       </h1>
   </section>-->
   <section class="page-content">
-    <p>So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts in the solution, there can be times when you can’t exactly remember what you changed and needs to go out with your project deployment to the production database. Deploying files is easy because of tools like <a href="http://winmerge.org/" target="_blank" rel="noopener">WinMerge</a>, however deploying things to a database can get quite complicated. You could script both schemas and use <a href="http://winmerge.org/" target="_blank" rel="noopener">WinMerge</a> to see the differences between the development database and the production database. But even doing that, you will still have to write a custom script to get the production database schema up to date.</p>
-<h3 id="Enter-xSql"><a href="#Enter-xSql" class="headerlink" title="Enter xSql"></a>Enter xSql</h3><p><a href="http://www.xsqlsoftware.com/" target="_blank" rel="noopener">xSQLSoftware</a> This is where a tool such as <a href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx" target="_blank" rel="noopener">xSQL Object</a> can be extremely helpful. All that need be done is set up the connections, run the comparison, and then you can visually see what has changed between your development and live databases! No need to remember what you changed or any of that, just run the comparison and execute the change script. It will even allow you to save database snapshots before running your change scripts. You can see an excellent <a href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1" target="_blank" rel="noopener">walkthrough</a> <a href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1" target="_blank" rel="noopener">here</a>. <a href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx" target="_blank" rel="noopener">xSQL Object</a> also comes in a bundle with another one of their products, <a href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx" target="_blank" rel="noopener">xSQL Data</a> or by it’s self. <a href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx" target="_blank" rel="noopener">xSQL Data</a> allows you to compare data differences between two databases.</p>
-<h3 id="The-Best-Part"><a href="#The-Best-Part" class="headerlink" title="The Best Part"></a>The Best Part</h3><p>All the goodness of the <a href="http://www.xsqlsoftware.com/LiteEdition.aspx" target="_blank" rel="noopener">xSQL Bundle (xSQL Object and xSQL Data) Lite Edition</a> comes at a very affordable price <strong>FREE</strong>! If you only use SQL express edition then you can get the full bundle lite edition and it will work without any restrictions at all! However, if you need to use it against other versions of SQL Server it does have the following limitations:</p>
-<ul>
-<li>up to 25 tables</li>
-<li>up to 40 views</li>
-<li>up to 40 stored procedures</li>
-<li>up to 40 functions  </li>
-</ul>
-<p>If you are using it against a small database then you shouldn’t have any problems. Now if you have databases larger than this and are using SQL Server editions other than express, the product costs $399.00 for a single user license. BUT, after downloading it I was sent an email offering 30% off if I purchased the product within 7 days of the download. That brings the cost down to <strong>$280</strong>! Not too bad when you compare it with the prices of other comparable tools. So I ask you to go to the website and check it out if you haven’t already! <a href="http://www.xsqlsoftware.com" target="_blank" rel="noopener">http://www.xsqlsoftware.com</a></p>
-<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>After contacting the company about licensing, I was shown another one of their great tools. A little while back I wrote a post titled Finding Text in SQL Server Stored Procedures. They have a tool called <a href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx" target="_blank" rel="noopener">xSQL Object Search</a> that allows you to search for all object types, through the names and definitions, for strings. It will also do a search using regular expressions! Pretty powerful stuff for a <strong>FREE </strong>tool! Check it out here: <a href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx" target="_blank" rel="noopener">xSQL Object Search</a></p>
-<p>Happy Deployments!</p>
-
+    <h2 id="The-Preface"><a href="#The-Preface" class="headerlink" title="The Preface"></a>The Preface</h2><p>In my time with <a href="https://cloud.oracle.com/home" target="_blank" rel="noopener">Oracle</a>, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers to OCI. This would provide some challenges for current customers as they would require an exercise in taking inventory of their current cloud resources. This would help in capacity planning for their future in Oracle’s cloud. Some customers kept up to date spreadsheets of all their current services in OCI-C, while others were seeking help with a more automated approach at mapping their current OCI-C resources.</p>
+<h2 id="The-Situation"><a href="#The-Situation" class="headerlink" title="The Situation"></a>The Situation</h2><p>I was assigned to help a customer with their capacity planning for migration. They were in need of some information that Oracle couldn’t provide (as it was beyond a security boundary) and other information that could be provided programmatically using the <a href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsa/rest-endpoints.html" target="_blank" rel="noopener">OPC API</a>. I was determined to give this customer the most information that could be provided in an automated fashion. They were specifically interested in their IaaS compute instances and collecting metadata information about them. I figured a simple CLI application could do the trick.</p>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>I was able to cobble together a <a href="https://nodejs.org" target="_blank" rel="noopener">NodeJS</a> application that could be configured with endpoint information, check the user’s credentials and pull all the necessary information down from the API. Once that was done, we could introspect it for the specific information we were looking for and write it to a simple CSV file.</p>
+<p>If you’re on OCI-C and need to collect your own IaaS instance information, hopefully this tool can help you too!</p>
+<h3 id="Click-to-check-the-Repo-out-on-GitHub"><a href="#Click-to-check-the-Repo-out-on-GitHub" class="headerlink" title="Click to check the Repo out on GitHub"></a><a href="https://github.com/rollemira/opc-instance-data" target="_blank" rel="noopener">Click to check the Repo out on GitHub</a></h3>
   </section>
 </article>
 <br>
 
 <h6>Tags:</h6>
 <div class="tags">
-    <a href="/tags/sql/" class="btn btn-default btn-xs">sql</a> <a href="/tags/deployment/" class="btn btn-default btn-xs">deployment</a>
+    <a href="/tags/development/" class="btn btn-default btn-xs">development</a> <a href="/tags/nodejs/" class="btn btn-default btn-xs">nodejs</a>
 </div>
 <br>
 <h6>More posts:</h6>
 <nav id="pagination">
   
-    <a href="/2011/09/18/Website-Move-and-Software-Change/" title="Website Move and Software Change" class="prev">
-      <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Website Move and Software Change
-    </a>&nbsp;
-  
 
   
 
   
-    &nbsp;<a href="/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/" title="The HttpWebRequest and Using Client Certificates" class="next">
-      The HttpWebRequest and Using Client Certificates&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+    &nbsp;<a href="/2017/08/09/Task-Running-Windows-Service-in-NET/" title="Task Running Windows Service in .NET" class="next">
+      Task Running Windows Service in .NET&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
     </a>
   
 </nav>

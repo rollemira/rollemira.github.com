@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="canonical" href="https://iramellor.com/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/"/>
+<link rel="canonical" href="https://iramellor.com/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/">
 <!--Author-->
 
 <meta name="author" content="Ira Mellor">
@@ -39,9 +39,9 @@
 <link rel="stylesheet" href="/css/YTPlayer.min.css">
 <link rel="stylesheet" href="/css/magnific-popup.min.css">
 <link rel="stylesheet" href="/css/highlight.min.css">
-<link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -117,7 +117,7 @@ if (!window.isRunningLocal) {
                 </li>
                 
                 <li>
-                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="external">Contact</a>
+                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="noopener">Contact</a>
                 </li>
                 
             </ul>
@@ -170,7 +170,7 @@ if (!window.isRunningLocal) {
         <article id="post">
   <section class="meta">
     <h6>Published: 12/12/2008</h6>
-  </section><br />
+  </section><br>
   <!--<section class="page-head">
       <h1>
         SQL Server Side Paging With a Validated Dynamic Order By
@@ -179,27 +179,26 @@ if (!window.isRunningLocal) {
   <section class="page-content">
     <p>So this is what it has come to anymore. Everyone is all about server side paging via SQL Server. As well they should be! It is so much faster and more efficient than having ADO or ADO.NET bring back a ton of records and then chop it to page it. However, there has always been some problems when trying to accomplish this task, especially using a SQL database that is pre 2005.</p>
 <p>This task is easier to accomplish in SQL 2005 and 2008 using the ROW_NUMBER() function. The part that gets flaky is having a dynamic order by clause in your SQL statement. Unfortunately, the only way to accomplish this is to write some dynamic SQL. In doing so, It can be hard to tell if the order by parameter received by the stored procedure is a valid one for the table you are selecting from.</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Enter the &quot;IsValidOrderBy&quot; user-defined function. This is a little function that will tell you if the column and order in the dynamic order by parameter is a valid one for the select statement you are running.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> [dbo].[udf_OrderByExists] </div><div class="line">(</div><div class="line">    @TableName <span class="keyword">NVARCHAR</span>(<span class="number">50</span>),</div><div class="line">    @OrderBy <span class="keyword">NVARCHAR</span>(<span class="number">50</span>)</div><div class="line">)</div><div class="line"><span class="keyword">RETURNS</span> <span class="built_in">BIT</span></div><div class="line"><span class="keyword">AS</span></div><div class="line"><span class="keyword">BEGIN</span></div><div class="line"> </div><div class="line">    <span class="keyword">DECLARE</span> @<span class="keyword">Result</span> <span class="built_in">BIT</span></div><div class="line">    <span class="keyword">SET</span> @<span class="keyword">Result</span> = <span class="number">0</span></div><div class="line"> </div><div class="line">    <span class="keyword">DECLARE</span> @TableColumns <span class="keyword">TABLE</span></div><div class="line">    (</div><div class="line">        [ColumnNameAndSort] <span class="keyword">NVARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">    )</div><div class="line"> </div><div class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</div><div class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] </div><div class="line">    <span class="keyword">FROM</span> syscolumns </div><div class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</div><div class="line"> </div><div class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</div><div class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] + <span class="string">' ASC'</span> </div><div class="line">    <span class="keyword">FROM</span> syscolumns </div><div class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</div><div class="line"> </div><div class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</div><div class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] + <span class="string">' DESC'</span> </div><div class="line">    <span class="keyword">FROM</span> syscolumns </div><div class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</div><div class="line"> </div><div class="line">    <span class="keyword">IF</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> [ColumnNameAndSort] <span class="keyword">FROM</span> </div><div class="line">        @TableColumns <span class="keyword">WHERE</span> [ColumnNameAndSort] = @OrderBy)</div><div class="line">        <span class="keyword">SET</span> @<span class="keyword">Result</span> = <span class="number">1</span></div><div class="line"> </div><div class="line">    <span class="keyword">RETURN</span> @<span class="keyword">Result</span>    </div><div class="line"> </div><div class="line"><span class="keyword">END</span></div></pre></td></tr></table></figure></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Enter the &quot;IsValidOrderBy&quot; user-defined function. This is a little function that will tell you if the column and order in the dynamic order by parameter is a valid one for the select statement you are running.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> [dbo].[udf_OrderByExists] </span><br><span class="line">(</span><br><span class="line">    @TableName <span class="keyword">NVARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    @OrderBy <span class="keyword">NVARCHAR</span>(<span class="number">50</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">RETURNS</span> <span class="built_in">BIT</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">DECLARE</span> @<span class="keyword">Result</span> <span class="built_in">BIT</span></span><br><span class="line">    <span class="keyword">SET</span> @<span class="keyword">Result</span> = <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">DECLARE</span> @TableColumns <span class="keyword">TABLE</span></span><br><span class="line">    (</span><br><span class="line">        [ColumnNameAndSort] <span class="keyword">NVARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">    )</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</span><br><span class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</span><br><span class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] + <span class="string">' ASC'</span> </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> @TableColumns</span><br><span class="line">    <span class="keyword">SELECT</span> [<span class="keyword">Name</span>] + <span class="string">' DESC'</span> </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> <span class="keyword">ID</span> = OBJECT_ID(@TableName)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">IF</span> <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> [ColumnNameAndSort] <span class="keyword">FROM</span> </span><br><span class="line">        @TableColumns <span class="keyword">WHERE</span> [ColumnNameAndSort] = @OrderBy)</span><br><span class="line">        <span class="keyword">SET</span> @<span class="keyword">Result</span> = <span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">RETURN</span> @<span class="keyword">Result</span>    </span><br><span class="line"> </span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure></p>
 <p>Here you can see that we are taking 2 inputs. The first one being the table name you are selecting from, and the second being the order by clause received by the stored procedure. The function will then return a bit telling you if the column and order was found for the table you are selecting from.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>A simple example of using this user defined function would be selecting from a table of products. In that case, your stored procedure could look like so<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> [dbo].[usp_GetProductsPaged]</div><div class="line">    @SortExpression <span class="keyword">NVARCHAR</span>(<span class="number">50</span>),</div><div class="line">    @PageIndex <span class="built_in">INT</span>,</div><div class="line">    @PageSize <span class="built_in">INT</span></div><div class="line"><span class="keyword">AS</span></div><div class="line"> </div><div class="line"><span class="comment">-- SET NOCOUNT ON added to prevent extra result sets from</span></div><div class="line"><span class="comment">-- interfering with SELECT statements.</span></div><div class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</div><div class="line"> </div><div class="line">IF ((<span class="keyword">SELECT</span> [dbo].[udf_OrderByExists](<span class="string">'dbo.Products'</span>, @SortExpression)) = <span class="number">0</span>)</div><div class="line">    <span class="keyword">SET</span> @SortExpression = <span class="string">'Name'</span></div><div class="line"> </div><div class="line"><span class="keyword">DECLARE</span> @<span class="keyword">sql</span> <span class="keyword">AS</span> <span class="keyword">NVARCHAR</span>(<span class="keyword">MAX</span>),</div><div class="line">    @ParamDefinition <span class="keyword">AS</span> <span class="keyword">NVARCHAR</span>(<span class="keyword">MAX</span>),</div><div class="line">    @StartRowIndex <span class="built_in">INT</span>,</div><div class="line">    @RecordCount <span class="built_in">INT</span></div><div class="line"> </div><div class="line"><span class="keyword">SELECT</span> @RecordCount = <span class="keyword">COUNT</span>([ProductID]) <span class="keyword">FROM</span> [Products]</div><div class="line"> </div><div class="line"><span class="keyword">IF</span> @PageIndex = <span class="number">0</span></div><div class="line">    <span class="keyword">SET</span> @PageIndex = <span class="number">1</span></div><div class="line"><span class="keyword">IF</span> @PageSize = <span class="number">0</span></div><div class="line">    <span class="keyword">SET</span> @PageSize = @RecordCount</div><div class="line"><span class="keyword">SET</span> @StartRowIndex = ((@PageIndex * @PageSize) - @PageSize) + <span class="number">1</span></div><div class="line"><span class="keyword">SET</span> @ParamDefinition = N<span class="string">'@paramStartRowIndex INT, </span></div><div class="line"><span class="string">    @paramPageSize INT'</span></div><div class="line"> </div><div class="line"><span class="keyword">SET</span> @<span class="keyword">sql</span> = N<span class="string">'SELECT</span></div><div class="line"><span class="string">    [ProductID],</span></div><div class="line"><span class="string">    [Name],</span></div><div class="line"><span class="string">    [Description],</span></div><div class="line"><span class="string">    [Price]</span></div><div class="line"><span class="string">FROM (SELECT</span></div><div class="line"><span class="string">    [ProductID],</span></div><div class="line"><span class="string">    [Name],</span></div><div class="line"><span class="string">    [Description],</span></div><div class="line"><span class="string">    [Price],</span></div><div class="line"><span class="string">    ROW_NUMBER() OVER(ORDER BY '</span> + @SortExpression + <span class="string">') AS [RowNumber]</span></div><div class="line"><span class="string">FROM [Products]) AS [Prods]</span></div><div class="line"><span class="string">WHERE [RowNumber] BETWEEN @paramStartRowIndex</span></div><div class="line"><span class="string">        AND (@paramStartRowIndex + @paramPageSize) - 1'</span></div><div class="line"> </div><div class="line"><span class="comment">-- For testing</span></div><div class="line"><span class="comment">--PRINT @sql</span></div><div class="line"><span class="comment">--PRINT @StartRowIndex</span></div><div class="line"> </div><div class="line">EXEC sp_executesql @<span class="keyword">sql</span>, </div><div class="line">@ParamDefinition, </div><div class="line">@paramStartRowIndex = @StartRowIndex, </div><div class="line">@paramPageSize = @PageSize</div><div class="line"> </div><div class="line"><span class="keyword">SELECT</span> @RecordCount <span class="keyword">AS</span> [RecordCount]</div></pre></td></tr></table></figure></p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>A simple example of using this user defined function would be selecting from a table of products. In that case, your stored procedure could look like so<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> [dbo].[usp_GetProductsPaged]</span><br><span class="line">    @SortExpression <span class="keyword">NVARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    @PageIndex <span class="built_in">INT</span>,</span><br><span class="line">    @PageSize <span class="built_in">INT</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- SET NOCOUNT ON added to prevent extra result sets from</span></span><br><span class="line"><span class="comment">-- interfering with SELECT statements.</span></span><br><span class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</span><br><span class="line"> </span><br><span class="line">IF ((<span class="keyword">SELECT</span> [dbo].[udf_OrderByExists](<span class="string">'dbo.Products'</span>, @SortExpression)) = <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">SET</span> @SortExpression = <span class="string">'Name'</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">DECLARE</span> @<span class="keyword">sql</span> <span class="keyword">AS</span> <span class="keyword">NVARCHAR</span>(<span class="keyword">MAX</span>),</span><br><span class="line">    @ParamDefinition <span class="keyword">AS</span> <span class="keyword">NVARCHAR</span>(<span class="keyword">MAX</span>),</span><br><span class="line">    @StartRowIndex <span class="built_in">INT</span>,</span><br><span class="line">    @RecordCount <span class="built_in">INT</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> @RecordCount = <span class="keyword">COUNT</span>([ProductID]) <span class="keyword">FROM</span> [Products]</span><br><span class="line"> </span><br><span class="line"><span class="keyword">IF</span> @PageIndex = <span class="number">0</span></span><br><span class="line">    <span class="keyword">SET</span> @PageIndex = <span class="number">1</span></span><br><span class="line"><span class="keyword">IF</span> @PageSize = <span class="number">0</span></span><br><span class="line">    <span class="keyword">SET</span> @PageSize = @RecordCount</span><br><span class="line"><span class="keyword">SET</span> @StartRowIndex = ((@PageIndex * @PageSize) - @PageSize) + <span class="number">1</span></span><br><span class="line"><span class="keyword">SET</span> @ParamDefinition = N<span class="string">'@paramStartRowIndex INT, </span></span><br><span class="line"><span class="string">    @paramPageSize INT'</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">sql</span> = N<span class="string">'SELECT</span></span><br><span class="line"><span class="string">    [ProductID],</span></span><br><span class="line"><span class="string">    [Name],</span></span><br><span class="line"><span class="string">    [Description],</span></span><br><span class="line"><span class="string">    [Price]</span></span><br><span class="line"><span class="string">FROM (SELECT</span></span><br><span class="line"><span class="string">    [ProductID],</span></span><br><span class="line"><span class="string">    [Name],</span></span><br><span class="line"><span class="string">    [Description],</span></span><br><span class="line"><span class="string">    [Price],</span></span><br><span class="line"><span class="string">    ROW_NUMBER() OVER(ORDER BY '</span> + @SortExpression + <span class="string">') AS [RowNumber]</span></span><br><span class="line"><span class="string">FROM [Products]) AS [Prods]</span></span><br><span class="line"><span class="string">WHERE [RowNumber] BETWEEN @paramStartRowIndex</span></span><br><span class="line"><span class="string">        AND (@paramStartRowIndex + @paramPageSize) - 1'</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- For testing</span></span><br><span class="line"><span class="comment">--PRINT @sql</span></span><br><span class="line"><span class="comment">--PRINT @StartRowIndex</span></span><br><span class="line"> </span><br><span class="line">EXEC sp_executesql @<span class="keyword">sql</span>, </span><br><span class="line">@ParamDefinition, </span><br><span class="line">@paramStartRowIndex = @StartRowIndex, </span><br><span class="line">@paramPageSize = @PageSize</span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> @RecordCount <span class="keyword">AS</span> [RecordCount]</span><br></pre></td></tr></table></figure></p>
 <p>As you can see, by calling <strong>udf_OrderByExists </strong>and passing in the parameters, if the order by does not fit the table, we then change it to be something known and valid.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>With a simple and portable user defined function, we can ensure that the order by clauses going into our paging stored procedures are validated thus keeping integrity. It isn’t fun having to write and maintain dynamic SQL in stored procedures, but it can be done and also made a little bit safer. One last tip: Always use the sp_executesql, as this will tell the SQL server that the execution plan should be cached for re-use.</p>
 <p>Hope this helps! </p>
 
   </section>
 </article>
-<br />
+<br>
 
 <h6>Tags:</h6>
 <div class="tags">
     <a href="/tags/code/" class="btn btn-default btn-xs">code</a> <a href="/tags/sql/" class="btn btn-default btn-xs">sql</a>
 </div>
-<br />
+<br>
 <h6>More posts:</h6>
 <nav id="pagination">
   
-    <a href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/"
-      title="Finding Text in SQL Server Stored Procedures" class="prev">
+    <a href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/" title="Finding Text in SQL Server Stored Procedures" class="prev">
       <i class="fa fa-arrow-left"></i>&nbsp;&nbsp;Finding Text in SQL Server Stored Procedures
     </a>&nbsp;
   
@@ -207,23 +206,22 @@ if (!window.isRunningLocal) {
   
 
   
-    &nbsp;<a href="/2008/10/08/The-private-access-modifier-can-do-that/"
-      title="The Private Access Modifier Can Do That?" class="next">
+    &nbsp;<a href="/2008/10/08/The-private-access-modifier-can-do-that/" title="The Private Access Modifier Can Do That?" class="next">
       The Private Access Modifier Can Do That?&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
     </a>
   
 </nav>
 
-<br />
+<br>
 
-    <hr />
+    <hr>
     <h2>Comments:</h2>
     <div id="disqus_thread">
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 
-<br/><br/>
+<br><br>
     </div>
 </section>
 <!--inner page content-->
@@ -235,7 +233,7 @@ if (!window.isRunningLocal) {
             <div class="col-md-4">
                 <div class="footer-col author">
                     <h3 class="widget-title">The Author</h3>
-                    <img src='https://www.gravatar.com/avatar/73615cfff4eaf47dfd2ebc85c0d826ef?s=75' alt='Ira Mellor' />
+                    <img src="https://www.gravatar.com/avatar/73615cfff4eaf47dfd2ebc85c0d826ef?s=75" alt="Ira Mellor">
                     <p class="author-name">
                         Ira Mellor
                     </p>
@@ -252,28 +250,28 @@ if (!window.isRunningLocal) {
                     <ul class="list-inline social-1">
                         
                         <li>
-                        <a href="http://www.linkedin.com/in/iramellor" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on LinkedIn" target="_blank">
+                        <a href="http://www.linkedin.com/in/iramellor" data-toggle="tooltip" title data-placement="top" data-original-title="See me on LinkedIn" target="_blank">
                             <i class="fa fa-linkedin"></i>
                         </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://www.github.com/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on Github" target="_blank">
+                            <a href="http://www.github.com/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on Github" target="_blank">
                                 <i class="fa fa-github"></i>
                             </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://www.bitbucket.org/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on BitBucket" target="_blank">
+                            <a href="http://www.bitbucket.org/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on BitBucket" target="_blank">
                                 <i class="fa fa-bitbucket"></i>
                             </a>
                         </li>
                         
                         
                         <li>
-                            <a href="http://stackoverflow.com/users/87734/rollemira" data-toggle="tooltip" title="" data-placement="top" data-original-title="See me on StackOverflow" target="_blank">
+                            <a href="http://stackoverflow.com/users/87734/rollemira" data-toggle="tooltip" title data-placement="top" data-original-title="See me on StackOverflow" target="_blank">
                                 <i class="fa fa-stack-overflow"></i>
                             </a>
                         </li>
@@ -281,7 +279,7 @@ if (!window.isRunningLocal) {
                         
                         <li>
                             
-                        <a href="https://iramellor.com/atom.xml" data-toggle="tooltip" title="" data-placement="top" data-original-title="Subscribe to my feed" target="_blank">
+                        <a href="https://iramellor.com/atom.xml" data-toggle="tooltip" title data-placement="top" data-original-title="Subscribe to my feed" target="_blank">
                             <i class="fa fa-feed"></i>
                         </a>
                         </li>
@@ -305,6 +303,13 @@ if (!window.isRunningLocal) {
                         
 
   <section id="recent-posts">
+    
+      <article class="archive-item">
+    <a href="/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/" title="Oracle Public Cloud Instance Information Collector">Oracle Public Cloud Instance Information Collector</a>
+        <time datetime="2019-03-26T13:00:00.000Z">
+            03/26/2019
+        </time>
+</article>
     
       <article class="archive-item">
     <a href="/2017/08/09/Task-Running-Windows-Service-in-NET/" title="Task Running Windows Service in .NET">Task Running Windows Service in .NET</a>
@@ -331,13 +336,6 @@ if (!window.isRunningLocal) {
     <a href="/2016/11/18/WooCommerce-API-Using-RestSharp-over-HTTP-with-OAuth/" title="WooCommerce API Using RestSharp Over HTTP With OAuth">WooCommerce API Using RestSharp Over HTTP With OAuth</a>
         <time datetime="2016-11-18T20:12:52.000Z">
             11/18/2016
-        </time>
-</article>
-    
-      <article class="archive-item">
-    <a href="/2016/11/17/The-Developer-s-Feed/" title="The Developer's Feed">The Developer's Feed</a>
-        <time datetime="2016-11-18T00:28:43.000Z">
-            11/17/2016
         </time>
 </article>
     
@@ -372,7 +370,7 @@ if (!window.isRunningLocal) {
                 </li>
                 
                 <li>
-                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="external">Contact</a>
+                    <a href="https://twitter.com/direct_messages/create/rollemira" title="Contact" target="_blank" rel="noopener">Contact</a>
                 </li>
                 
                 <li>
@@ -381,7 +379,7 @@ if (!window.isRunningLocal) {
                 
             </ul>
             <div class="footer-privacy-text">
-                Copyright &copy;2018 <a href="#">Ira Mellor</a> Hosted by <a href="https://github.com" target="_blank">GitHub</a> in 
+                Copyright &copy;2019 <a href="#">Ira Mellor</a> Hosted by <a href="https://github.com" target="_blank">GitHub</a> in 
                 <a href="https://github.com/rollemira/rollemira.github.com" target="_blank">this repository</a>. Site generated using 
                 <a href="https://hexo.io" target="_blank">Hexo</a>.
             </div>
