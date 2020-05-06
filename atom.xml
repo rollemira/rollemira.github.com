@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iramellor.com/"/>
-  <updated>2019-03-26T21:33:33.279Z</updated>
+  <updated>2019-11-26T17:24:47.737Z</updated>
   <id>https://iramellor.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/"/>
     <id>https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/</id>
     <published>2019-03-26T13:00:00.000Z</published>
-    <updated>2019-03-26T21:33:33.279Z</updated>
+    <updated>2019-11-26T17:24:47.737Z</updated>
     
     <content type="html"><![CDATA[<h2 id="The-Preface"><a href="#The-Preface" class="headerlink" title="The Preface"></a>The Preface</h2><p>In my time with <a href="https://cloud.oracle.com/home" target="_blank" rel="noopener">Oracle</a>, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers to OCI. This would provide some challenges for current customers as they would require an exercise in taking inventory of their current cloud resources. This would help in capacity planning for their future in Oracle’s cloud. Some customers kept up to date spreadsheets of all their current services in OCI-C, while others were seeking help with a more automated approach at mapping their current OCI-C resources.</p><h2 id="The-Situation"><a href="#The-Situation" class="headerlink" title="The Situation"></a>The Situation</h2><p>I was assigned to help a customer with their capacity planning for migration. They were in need of some information that Oracle couldn’t provide (as it was beyond a security boundary) and other information that could be provided programmatically using the <a href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsa/rest-endpoints.html" target="_blank" rel="noopener">OPC API</a>. I was determined to give this customer the most information that could be provided in an automated fashion. They were specifically interested in their IaaS compute instances and collecting metadata information about them. I figured a simple CLI application could do the trick.</p><h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>I was able to cobble together a <a href="https://nodejs.org" target="_blank" rel="noopener">NodeJS</a> application that could be configured with endpoint information, check the user’s credentials and pull all the necessary information down from the API. Once that was done, we could introspect it for the specific information we were looking for and write it to a simple CSV file.</p><p>If you’re on OCI-C and need to collect your own IaaS instance information, hopefully this tool can help you too!</p><h3 id="Click-to-check-the-Repo-out-on-GitHub"><a href="#Click-to-check-the-Repo-out-on-GitHub" class="headerlink" title="Click to check the Repo out on GitHub"></a><a href="https://github.com/rollemira/opc-instance-data" target="_blank" rel="noopener">Click to check the Repo out on GitHub</a></h3>]]></content>
     
@@ -342,9 +342,9 @@
     </summary>
     
     
-      <category term="sql" scheme="https://iramellor.com/tags/sql/"/>
-    
       <category term="code" scheme="https://iramellor.com/tags/code/"/>
+    
+      <category term="sql" scheme="https://iramellor.com/tags/sql/"/>
     
   </entry>
   
@@ -367,9 +367,9 @@
     </summary>
     
     
-      <category term="sql" scheme="https://iramellor.com/tags/sql/"/>
-    
       <category term="code" scheme="https://iramellor.com/tags/code/"/>
+    
+      <category term="sql" scheme="https://iramellor.com/tags/sql/"/>
     
   </entry>
   
