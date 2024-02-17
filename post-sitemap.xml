@@ -16,7 +16,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2016/11/16/The-Need-to-Knows-of-Developers/</loc>
+        <loc>https://iramellor.com/2008/04/21/Using-The-Event-Model-Throwing-and-Handling-Custom-Events/</loc>
         <lastmod>2024-02-17T04:20:45.875Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -32,7 +32,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2008/04/21/Using-The-Event-Model-Throwing-and-Handling-Custom-Events/</loc>
+        <loc>https://iramellor.com/2016/11/16/The-Need-to-Knows-of-Developers/</loc>
         <lastmod>2024-02-17T04:20:45.875Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -88,15 +88,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/</loc>
-        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://iramellor.com/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/</loc>
+        <loc>https://iramellor.com/2017/08/09/Task-Running-Windows-Service-in-NET/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -112,7 +104,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2017/08/09/Task-Running-Windows-Service-in-NET/</loc>
+        <loc>https://iramellor.com/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -129,6 +121,14 @@
 
     <url>
         <loc>https://iramellor.com/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/</loc>
+        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
