@@ -448,9 +448,9 @@
     
       <category term=".net" scheme="https://iramellor.com/tags/net/"/>
     
-      <category term="linq" scheme="https://iramellor.com/tags/linq/"/>
-    
       <category term="c#" scheme="https://iramellor.com/tags/c/"/>
+    
+      <category term="linq" scheme="https://iramellor.com/tags/linq/"/>
     
   </entry>
   
