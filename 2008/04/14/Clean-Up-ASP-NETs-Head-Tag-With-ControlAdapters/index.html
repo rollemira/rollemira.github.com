@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Clean Up ASP.NETs Head Tag With ControlAdapters - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/2008/04/14/clean-up-asp-nets-head-tag-with-controladapters/"/>
+    <!--Description-->
+    
+        <meta name="description" content="Ok, if you’re anything like me you absolutely gag when you see the rendered content of the ASP.NET head tag. It is all rendered out inline for some re">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Clean Up ASP.NETs Head Tag With ControlAdapters"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      <!-- One -->
+<section id="one">
+  <div class="meta">
+  
+      <span class="date">
+          04/14/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+
+
+    <h1 itemprop="name">
+        <a href="/2008/04/14/Clean-Up-ASP-NETs-Head-Tag-With-ControlAdapters/">Clean Up ASP.NETs Head Tag With ControlAdapters</a>
+      </h1>
+  
+
+
+
+
+<!-- Gallery -->
+
+
+
+<!-- Content -->
+<p>Ok, if you’re anything like me you absolutely gag when you see the rendered content of the ASP.NET head tag. It is all rendered out inline for some reason. I’m not 100% sure about the affects of it on web marketing, but I know one thing is for sure… It certainly doesn’t help your rankings any. At the very least it looks gross and it can be easily fixed with some portable c# files that you can include in any project. I found a reference <a target="_blank" rel="noopener" href="http://blogs.x2line.com/al/archive/2007/01/31/2816.aspx">here</a> about it, so I picked it up and ran with it. </p>
+<p>A couple of good things to note is the placement of some key pieces for control adapters in the .NET framework. The ControlAdapter class should be inherited for every control adapter you create, it can be found in the System.Web.UI.Adapters namespace. All of the tags we will be overriding belong to the System.Web.UI.HtmlControls namespace. </p>
+<p>The first tag we will override is the head tag itself.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlHeadAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlHead headTag = (HtmlHead)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.WriteBeginTag(<span class="string">&quot;head&quot;</span>);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(headTag.ID))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;id&quot;</span>, headTag.ClientID);             </span><br><span class="line">            writer.Write(HtmlTextWriter.TagRightChar);             </span><br><span class="line">            <span class="keyword">foreach</span> (Control item <span class="keyword">in</span> headTag.Controls)                 </span><br><span class="line">                item.RenderControl(writer);             </span><br><span class="line">            writer.WriteLine(<span class="string">&quot;&quot;</span>);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Next we are on to the title tag.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlTitleAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            writer.WriteLine();             </span><br><span class="line">            writer.WriteFullBeginTag(<span class="string">&quot;title&quot;</span>);             </span><br><span class="line">            writer.Write(Page.Title);             </span><br><span class="line">            writer.WriteEndTag(<span class="string">&quot;title&quot;</span>);             </span><br><span class="line">            writer.WriteLine();         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Now the link tags.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlLinkAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlLink linkTag = (HtmlLink)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.Write(<span class="string">&quot;&lt;link&quot;</span>);             </span><br><span class="line">            AttributeCollection attributes = linkTag.Attributes;             </span><br><span class="line">            IEnumerator keys = linkTag.Attributes.Keys.GetEnumerator();             </span><br><span class="line">            <span class="keyword">while</span> (keys.MoveNext())             </span><br><span class="line">            &#123;                 </span><br><span class="line">                <span class="built_in">string</span> key = (<span class="built_in">string</span>)keys.Current;                 </span><br><span class="line">                <span class="keyword">if</span> (key.ToLower() == <span class="string">&quot;href&quot;</span> &amp;&amp; attributes[key].Contains(<span class="string">&quot;~&quot;</span>))                     </span><br><span class="line">                    writer.WriteAttribute(key, linkTag.ResolveClientUrl(attributes[key]));                 </span><br><span class="line">                <span class="keyword">else</span>                     </span><br><span class="line">                    writer.WriteAttribute(key, attributes[key]);             </span><br><span class="line">                writer.WriteLine(<span class="string">&quot; /&gt;&quot;</span>);         </span><br><span class="line">            &#125;     </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Last but not least, the meta tags.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlMetaAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlMeta metaTag = (HtmlMeta)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.WriteBeginTag(<span class="string">&quot;meta&quot;</span>);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(metaTag.HttpEquiv))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;http-equiv&quot;</span>, metaTag.HttpEquiv);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(metaTag.Name))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;name&quot;</span>, metaTag.Name);             </span><br><span class="line">            writer.WriteAttribute(<span class="string">&quot;content&quot;</span>, metaTag.Content);             </span><br><span class="line">            writer.WriteLine(HtmlTextWriter.SelfClosingTagEnd);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Now all we have to do is setup a *.browser file in the App_Browsers folder to map the control adapter overrides.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">browsers</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">browser</span> <span class="attr">refID</span>=<span class="string">&quot;Default&quot;</span>&gt;</span>         </span><br><span class="line">        <span class="tag">&lt;<span class="name">controlAdapters</span>&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlHead&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlHeadAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlTitle&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlTitleAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlMeta&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlMetaAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlLink&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlLinkAdapter&quot;</span> /&gt;</span>         </span><br><span class="line">        <span class="tag">&lt;/<span class="name">controlAdapters</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;/<span class="name">browser</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">browsers</span>&gt;</span></span><br></pre></td></tr></table></figure><br>Now if we right click and view source we will see a nice clean head tag. </p>
+<p>Don’t live a moment longer with that ugly ASP.NET rendered head tag!&nbsp; </p>
+<p>Hope this helps!</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/asp-net/" class="button small">asp.net</a>
+</div>
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>comment:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+</section>
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/embed.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>

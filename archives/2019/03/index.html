@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Archives: 3/2019 - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/archives/2019/03/"/>
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          03/26/2019
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/">Oracle Public Cloud Instance Information Collector</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="The-Preface"><a href="#The-Preface" class="headerlink" title="The Preface"></a>The Preface</h2><p>In my time with <a target="_blank" rel="noopener" href="https://cloud.oracle.com/home">Oracle</a>, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers to OCI. This would provide some challenges for current customers as they would require an exercise in taking inventory of their current cloud resources. This would help in capacity planning for their future in Oracle’s cloud. Some customers kept up to date spreadsheets of all their current services in OCI-C, while others were seeking help with a more automated approach at mapping their current OCI-C resources.</p>
+<h2 id="The-Situation"><a href="#The-Situation" class="headerlink" title="The Situation"></a>The Situation</h2><p>I was assigned to help a customer with their capacity planning for migration. They were in need of some information that Oracle couldn’t provide (as it was beyond a security boundary) and other information that could be provided programmatically using the <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsa/rest-endpoints.html">OPC API</a>. I was determined to give this customer the most information that could be provided in an automated fashion. They were specifically interested in their IaaS compute instances and collecting metadata information about them. I figured a simple CLI application could do the trick.</p>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>I was able to cobble together a <a target="_blank" rel="noopener" href="https://nodejs.org">NodeJS</a> application that could be configured with endpoint information, check the user’s credentials and pull all the necessary information down from the API. Once that was done, we could introspect it for the specific information we were looking for and write it to a simple CSV file.</p>
+<p>If you’re on OCI-C and need to collect your own IaaS instance information, hopefully this tool can help you too!</p>
+<h3 id="Click-to-check-the-Repo-out-on-GitHub"><a href="#Click-to-check-the-Repo-out-on-GitHub" class="headerlink" title="Click to check the Repo out on GitHub"></a><a target="_blank" rel="noopener" href="https://github.com/rollemira/opc-instance-data">Click to check the Repo out on GitHub</a></h3>
+      
+      
+      <a class="article-comments" href="/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/development/" class="button small">development</a> <a href="/tags/nodejs/" class="button small">nodejs</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/count.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>WooCommerce API Using RestSharp Over HTTP With OAuth - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/2016/11/18/woocommerce-api-using-restsharp-over-http-with-oauth/"/>
+    <!--Description-->
+    
+        <meta name="description" content="Now after searching NuGet I saw that there is a C# WooCommerce library out there all ready written called WooCommerce.NET. This isn’t going to work fo">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="WooCommerce API Using RestSharp Over HTTP With OAuth"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      <!-- One -->
+<section id="one">
+  <div class="meta">
+  
+      <span class="date">
+          11/18/2016
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+
+
+    <h1 itemprop="name">
+        <a href="/2016/11/18/WooCommerce-API-Using-RestSharp-over-HTTP-with-OAuth/">WooCommerce API Using RestSharp Over HTTP With OAuth</a>
+      </h1>
+  
+
+
+
+
+<!-- Gallery -->
+
+
+
+<!-- Content -->
+<p>Now after searching <a target="_blank" rel="noopener" href="http://nuget.org">NuGet</a> I saw that there is a C# WooCommerce library out there all ready written called <a target="_blank" rel="noopener" href="https://github.com/XiaoFaye/WooCommerce.NET">WooCommerce.NET</a>. This isn’t going to work for me because I will need the ability to gain access to custom Order fields.</p>
+<p>So I decided to just use my favorite REST client <a target="_blank" rel="noopener" href="http://restsharp.org/">RestSharp</a> to contact a fairly simple REST API for <a target="_blank" rel="noopener" href="https://woocommerce.com/">WooCommerce</a>. But I was running into a strange authentication issue and being denied authentication with a 401 status code. </p>
+<p><strong>Now, first a disclaimer… DO NOT USE HTTP FOR WooCommerce IN A PRODUCTION ENVIRONMENT!</strong></p>
+<p>Ok, but I need to do some testing in a local environmnet so I can see that my code is working properly. Reading the <a target="_blank" rel="noopener" href="https://woocommerce.com/">WooCommerce</a> documentation for authentication, <a target="_blank" rel="noopener" href="http://woocommerce.github.io/woocommerce-rest-api-docs/#authentication-over-http">which can be found here</a>, it clearly states:</p>
+<blockquote>
+<p>The OAuth parameters must be added as query string parameters and not included in the Authorization header. This is because there is no reliable cross-platform way to get the raw request headers in WordPress.</p>
+</blockquote>
+<p>So I do a bit of digging about <a target="_blank" rel="noopener" href="http://restsharp.org/">RestSharp</a> and OAuth1.0 and come up <a target="_blank" rel="noopener" href="https://github.com/restsharp/RestSharp/blob/master/RestSharp.IntegrationTests/oAuth1Tests.cs">with this suite of tests</a>. Here’s the important bit that I needed:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Test</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Can_Authenticate_OAuth1_With_Querystring_Parameters</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">string</span> consumerKey = <span class="string">&quot;enterConsumerKeyHere&quot;</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">string</span> consumerSecret = <span class="string">&quot;enterConsumerSecretHere&quot;</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="built_in">string</span> baseUrl = <span class="string">&quot;http://restsharp.org&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> expected = <span class="keyword">new</span> List&lt;<span class="built_in">string</span>&gt;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;oauth_consumer_key&quot;</span>,</span><br><span class="line">        <span class="string">&quot;oauth_nonce&quot;</span>,</span><br><span class="line">        <span class="string">&quot;oauth_signature_method&quot;</span>,</span><br><span class="line">        <span class="string">&quot;oauth_timestamp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;oauth_version&quot;</span>,</span><br><span class="line">        <span class="string">&quot;oauth_signature&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    RestClient client = <span class="keyword">new</span> RestClient(baseUrl);</span><br><span class="line">    RestRequest request = <span class="keyword">new</span> RestRequest(Method.GET);</span><br><span class="line">    <span class="keyword">var</span> authenticator = OAuth1Authenticator.ForRequestToken(consumerKey, consumerSecret);</span><br><span class="line">    authenticator.ParameterHandling = OAuthParameterHandling.UrlOrPostParameters;</span><br><span class="line">    authenticator.Authenticate(client, request);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> requestUri = client.BuildUri(request);</span><br><span class="line">    <span class="keyword">var</span> actual = HttpUtility.ParseQueryString(requestUri.Query).AllKeys.ToList();</span><br><span class="line"></span><br><span class="line">    Assert.IsTrue(actual.SequenceEqual(expected));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>The above Authenticate method will do all the work and add all the parameters I need.</p>
+<p>But wait… Something’s not right here. In the debugger it shows me that the parameters on the request are being added as cookes:</p>
+<p><img src="https://iramellor.com/images/20161110_OAuth.jpg" alt="Visual Studio Debugger" /></p>
+<p>Strange, but ok. So I decided to make an extension method that does all the authentication, gets all the parameters added to the request, and then converts them to QueryString parameters.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">RestRequestExtensions</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RestRequest <span class="title">BuildOAuth1QueryString</span>(<span class="params"><span class="keyword">this</span> RestRequest request, RestClient client, <span class="built_in">string</span> consumerKey, <span class="built_in">string</span> consumerSecret</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> auth = OAuth1Authenticator.ForRequestToken(consumerKey, consumerSecret);</span><br><span class="line">        auth.ParameterHandling = OAuthParameterHandling.UrlOrPostParameters;</span><br><span class="line">        auth.Authenticate(client, request);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//convert all these oauth params from cookie to querystring</span></span><br><span class="line">        request.Parameters.ForEach(x =&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (x.Name.StartsWith(<span class="string">&quot;oauth_&quot;</span>))</span><br><span class="line">                x.Type = ParameterType.QueryString;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> request;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>So the code to build a request now looks something like this.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> client = <span class="keyword">new</span> RestClient(<span class="string">&quot;http://example.com/api/v1&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> RestRequest(<span class="string">&quot;/path/to/resource&quot;</span>);</span><br><span class="line">request.BuildOAuth1QueryString(client, <span class="string">&quot;&#123;consumer_key&#125;&quot;</span>, <span class="string">&quot;&#123;consumer_secret&#125;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> response = client.Execute(request);</span><br></pre></td></tr></table></figure><br>And there we have it. Talking to <a target="_blank" rel="noopener" href="https://woocommerce.com/">WooCommerce</a> with <a target="_blank" rel="noopener" href="http://restsharp.org/">RestSharp</a>.</p>
+<h2 id="For-Production"><a href="#For-Production" class="headerlink" title="For Production"></a>For Production</h2><p><strong>I can not stress enough to not communicate over HTTP in production.</strong> In production, you should be using HTTPS. In that case <a target="_blank" rel="noopener" href="http://woocommerce.github.io/woocommerce-rest-api-docs/#authentication-over-https">you can use HTTP Basic Authentication</a>. Then you will no longer need the BuildOAuth1QueryString extension method, you would simply add the Basic Authentication to the client like so:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Basic over Https</span></span><br><span class="line">client.Authenticator = <span class="keyword">new</span> HttpBasicAuthenticator(<span class="string">&quot;&#123;consumer_key&#125;&quot;</span>, <span class="string">&quot;&#123;consumer_secret&#125;&quot;</span>);</span><br></pre></td></tr></table></figure><br>Hope this helps!</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/c/" class="button small">c#</a> <a href="/tags/rest/" class="button small">rest</a>
+</div>
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>comment:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+</section>
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/embed.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>

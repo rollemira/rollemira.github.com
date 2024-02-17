@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Archives: 2009 - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/archives/2009/"/>
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          06/18/2009
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/">Avoiding the Database Deployment Nightmare</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts in the solution, there can be times when you can’t exactly remember what you changed and needs to go out with your project deployment to the production database. Deploying files is easy because of tools like <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a>, however deploying things to a database can get quite complicated. You could script both schemas and use <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a> to see the differences between the development database and the production database. But even doing that, you will still have to write a custom script to get the production database schema up to date.</p>
+<h3 id="Enter-xSql"><a href="#Enter-xSql" class="headerlink" title="Enter xSql"></a>Enter xSql</h3><p><a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/">xSQLSoftware</a> This is where a tool such as <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> can be extremely helpful. All that need be done is set up the connections, run the comparison, and then you can visually see what has changed between your development and live databases! No need to remember what you changed or any of that, just run the comparison and execute the change script. It will even allow you to save database snapshots before running your change scripts. You can see an excellent <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">walkthrough</a> <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">here</a>. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> also comes in a bundle with another one of their products, <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> or by it’s self. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> allows you to compare data differences between two databases.</p>
+<h3 id="The-Best-Part"><a href="#The-Best-Part" class="headerlink" title="The Best Part"></a>The Best Part</h3><p>All the goodness of the <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/LiteEdition.aspx">xSQL Bundle (xSQL Object and xSQL Data) Lite Edition</a> comes at a very affordable price <strong>FREE</strong>! If you only use SQL express edition then you can get the full bundle lite edition and it will work without any restrictions at all! However, if you need to use it against other versions of SQL Server it does have the following limitations:</p>
+<ul>
+<li>up to 25 tables</li>
+<li>up to 40 views</li>
+<li>up to 40 stored procedures</li>
+<li>up to 40 functions  </li>
+</ul>
+<p>If you are using it against a small database then you shouldn’t have any problems. Now if you have databases larger than this and are using SQL Server editions other than express, the product costs $399.00 for a single user license. BUT, after downloading it I was sent an email offering 30% off if I purchased the product within 7 days of the download. That brings the cost down to <strong>$280</strong>! Not too bad when you compare it with the prices of other comparable tools. So I ask you to go to the website and check it out if you haven’t already! <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com">http://www.xsqlsoftware.com</a></p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>After contacting the company about licensing, I was shown another one of their great tools. A little while back I wrote a post titled Finding Text in SQL Server Stored Procedures. They have a tool called <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a> that allows you to search for all object types, through the names and definitions, for strings. It will also do a search using regular expressions! Pretty powerful stuff for a <strong>FREE </strong>tool! Check it out here: <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a></p>
+<p>Happy Deployments!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/sql/" class="button small">sql</a> <a href="/tags/deployment/" class="button small">deployment</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          04/27/2009
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/">The HttpWebRequest and Using Client Certificates</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So you may have found yourself in a similar situation, needing to make a TCP/IP request to a 3rd party API possibly using SSL. Well, that is a quite simple task. It can however, be complicated if this 3rd party requires the use of certificates for communication to its API server. I found myself in some sort of certificate hell where I had the certificate, added it to the request and somehow it still wasn’t working. If you know what I’m talking about and had as many hurdles as I did, my condolences to you. I will try to explain in this article how I started, the problems I ran into and then the overall solution that ended up working for me. </p>
+<p>To start with, you should have some kind of certificate. Most likely a <em>.pfx or </em>.p12 file. This can also come with a private key or password for the certificate’s encryption. This is what a standard WebRequest over SSL might look like:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">GetData</span>(<span class="params"><span class="built_in">string</span> inputData</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//will hold the result</span></span><br><span class="line">    <span class="built_in">string</span> result = <span class="built_in">string</span>.Empty;</span><br><span class="line">    <span class="comment">//build the request object</span></span><br><span class="line">    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(<span class="string">&quot;https://someapi.com/&quot;</span>);</span><br><span class="line">    <span class="comment">//write the input data (aka post) to a byte array</span></span><br><span class="line">    <span class="built_in">byte</span>[] requestBytes = <span class="keyword">new</span> ASCIIEncoding().GetBytes(inputData);</span><br><span class="line">    <span class="comment">//get the request stream to write the post to</span></span><br><span class="line">    Stream requestStream = request.GetRequestStream();</span><br><span class="line">    <span class="comment">//write the post to the request stream</span></span><br><span class="line">    requestStream.Write(requestBytes, <span class="number">0</span>, requestBytes.Length);</span><br><span class="line">    <span class="comment">//build a response object to hold the response</span></span><br><span class="line">    <span class="comment">//submit the request by calling get response</span></span><br><span class="line">    HttpWebResponse response = (HttpWebResponse)request.GetResponse();</span><br><span class="line">    <span class="comment">//get the response stream to read the response from</span></span><br><span class="line">    Stream responseStream = response.GetResponseStream();</span><br><span class="line">    <span class="comment">//now read it out to our result</span></span><br><span class="line">    <span class="keyword">using</span> (StreamReader rdr = <span class="keyword">new</span> StreamReader(responseStream))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//set the result to the contents of the stream</span></span><br><span class="line">        result = rdr.ReadToEnd();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//return</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>The example above is missing the portion where you add the certificate to the request. You may receive a 403 Forbidden error from the server if a certificate is required to make the request to the API server. A simple way of adding a certificate to the request would be like so:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//add certificate to the request</span></span><br><span class="line">request.ClientCertificates.Add(<span class="keyword">new</span> X509Certificate(<span class="string">@&quot;C:\certs\Some Cert.p12&quot;</span>, <span class="string">@&quot;SecretP@$$w0rd&quot;</span>));</span><br></pre></td></tr></table></figure><br>The X509Certificate class is found in the System.Security.Cryptography.X509Certificates namespace. Simply add a new certificate to the client certificates before calling for the response, and it <strong>should</strong> be sent with the request. However, you may encounter an exception with the message “The system cannot find the file specified”. I encountered this error after I got the application off my local machine and onto the development server. After doing some research I stumbled upon this <a target="_blank" rel="noopener" href="http://support.microsoft.com/kb/948154">kb article</a>. This article opened my eyes to how using certificates is a little more complicated than I initially thought. Turns out the problem was that the user trying to access the certificate does not have a profile loaded.</p>
+<p>After stepping through the article, installing the certificate to the local machine’s personal certificate store, and then granting rights to the certificate using the <a target="_blank" rel="noopener" href="http://www.microsoft.com/downloads/details.aspx?familyid=c42e27ac-3409-40e9-8667-c748e422833f&amp;displaylang=en">WinHttpCertCfg.exe</a> tool, and putting in a little more code found in the kb article, I was well on my way. The article describes how to use C# to open a certificate store and use the certificate directly out of the store. This presents a bit more elegant, and in my opinion more secure, way of getting to and using the certificate.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//add it in a better way</span></span><br><span class="line">X509Store certStore = <span class="keyword">new</span> X509Store(<span class="string">&quot;My&quot;</span>, StoreLocation.LocalMachine);</span><br><span class="line">certStore.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);</span><br><span class="line">X509Certificate2 cert = certStore.Certificates.Find(X509FindType.FindBySubjectName, <span class="string">&quot;My cert subject&quot;</span>, <span class="literal">false</span>)[<span class="number">0</span>];</span><br><span class="line">certStore.Close();</span><br><span class="line">request.ClientCertificates.Add(cert);</span><br></pre></td></tr></table></figure><br>This method will not only give access to the certificate regardless of having a loaded profile, but it also takes the certificate’s private key password out of the code and/or configuration. This snippet above took me out of the certificate hell that was crushing my life for a couple days! </p>
+<p>Putting it all together:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">GetData</span>(<span class="params"><span class="built_in">string</span> inputData</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//will hold the result</span></span><br><span class="line">    <span class="built_in">string</span> result = <span class="built_in">string</span>.Empty;</span><br><span class="line">    <span class="comment">//build the request object</span></span><br><span class="line">    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(<span class="string">&quot;https://someapi.com/&quot;</span>);</span><br><span class="line">    <span class="comment">//add certificate to the request</span></span><br><span class="line">    <span class="comment">//request.ClientCertificates.Add(new X509Certificate(@&quot;C:\certs\Some Cert.p12&quot;, @&quot;SecretP@$$w0rd&quot;));</span></span><br><span class="line">    <span class="comment">//add it in a better way</span></span><br><span class="line">    X509Store certStore = <span class="keyword">new</span> X509Store(<span class="string">&quot;My&quot;</span>, StoreLocation.LocalMachine);</span><br><span class="line">    certStore.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);</span><br><span class="line">    X509Certificate2 cert = certStore.Certificates.Find(X509FindType.FindBySubjectName, <span class="string">&quot;My cert subject&quot;</span>, <span class="literal">false</span>)[<span class="number">0</span>];</span><br><span class="line">    certStore.Close();</span><br><span class="line">    request.ClientCertificates.Add(cert);</span><br><span class="line">    <span class="comment">//write the input data (aka post) to a byte array</span></span><br><span class="line">    <span class="built_in">byte</span>[] requestBytes = <span class="keyword">new</span> ASCIIEncoding().GetBytes(inputData);</span><br><span class="line">    <span class="comment">//get the request stream to write the post to</span></span><br><span class="line">    Stream requestStream = request.GetRequestStream();</span><br><span class="line">    <span class="comment">//write the post to the request stream</span></span><br><span class="line">    requestStream.Write(requestBytes, <span class="number">0</span>, requestBytes.Length);</span><br><span class="line">    <span class="comment">//build a response object to hold the response</span></span><br><span class="line">    <span class="comment">//submit the request by calling get response</span></span><br><span class="line">    HttpWebResponse response = (HttpWebResponse)request.GetResponse();</span><br><span class="line">    <span class="comment">//get the response stream to read the response from</span></span><br><span class="line">    Stream responseStream = response.GetResponseStream();</span><br><span class="line">    <span class="comment">//now read it out to our result</span></span><br><span class="line">    <span class="keyword">using</span> (StreamReader rdr = <span class="keyword">new</span> StreamReader(responseStream))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//set the result to the contents of the stream</span></span><br><span class="line">        result = rdr.ReadToEnd();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//return</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/04/27/The-HttpWebRequest-and-Using-Client-Certificates/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/c/" class="button small">c#</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          04/12/2009
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/">Finding Text in SQL Server Stored Procedures</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So, I’m sure you have been met with a similar scenario during development. You know the one that you have to rename a column or even drop a column in the database. This can be quite annoying if you are doing stored procedure based data access for your application. Once you change the column on the table, you have to figure out which stored procedures reference the column. They aren’t always tough to find most of the time, but sometimes you are dealing with a column that may be referenced in many stored procedures. Well thanks to my boss Cliff’s research and knowledge sharing, your search can be as easy as ours!</p>
+<p>The query:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">USE Northwind</span><br><span class="line">GO </span><br><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@SearchText</span> <span class="keyword">AS</span> <span class="type">VARCHAR</span>(<span class="number">50</span>)</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@SearchText</span> <span class="operator">=</span> <span class="string">&#x27;CustomerID&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ROUTINE_NAME,</span><br><span class="line">ROUTINE_DEFINITION</span><br><span class="line"><span class="keyword">FROM</span> INFORMATION_SCHEMA.ROUTINES</span><br><span class="line"><span class="keyword">WHERE</span> ROUTINE_NAME <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">+</span> <span class="variable">@SearchText</span> <span class="operator">+</span> <span class="string">&#x27;%&#x27;</span></span><br><span class="line"><span class="keyword">OR</span> ROUTINE_DEFINITION <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">+</span> <span class="variable">@SearchText</span> <span class="operator">+</span> <span class="string">&#x27;%&#x27;</span></span><br></pre></td></tr></table></figure><br>This query will return all the names and routine definitions of stored procedures that contain certain text. It is not really bound by column names but I needed a true development scenario. Run the query with what you are looking for and presto! All the stored procedures you will need to modify.</p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/sql/" class="button small">sql</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/count.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>

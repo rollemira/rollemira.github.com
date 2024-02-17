@@ -1,0 +1,151 @@
+figure pre,
+figure.highlight {
+    background: #F7F7F7;
+    margin: 0 -20px;
+    padding: 15px 20px;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0;
+    overflow: auto;
+    color: #333;
+    width: 100%;
+}
+
+figure.highlight .gutter pre {
+    color: #333;
+}
+
+figure pre,
+figure code {
+    font-family: Consolas, Monaco, "Source Code Pro", Menlo, monospace;
+}
+
+figure code {
+    background: #eee;
+    text-shadow: 0 1px #fff;
+    padding: 0 0.3em;
+}
+
+figure pre code {
+    background: none;
+    text-shadow: none;
+    padding: 0;
+}
+
+figure.highlight pre {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+figure.highlight table {
+    margin: 0;
+    width: auto;
+}
+
+figure.highlight td {
+    border: none;
+    padding: 0;
+}
+
+figure.highlight figcaption {
+    font-size: 0.85em;
+    color: #999;
+    line-height: 1em;
+    margin-bottom: 1em;
+}
+
+figure.highlight figcaption:before,
+figure.highlight figcaption:after {
+    content: "";
+    display: table;
+}
+
+figure.highlight figcaption:after {
+    clear: both;
+}
+
+figure.highlight figcaption a {
+    float: right;
+}
+
+figure.highlight .gutter pre {
+    text-align: right;
+    padding-right: 20px;
+}
+
+figure.highlight .line {
+    height: 22.400000000000002px;
+}
+
+figure.highlight .line.marked {
+    background: #515151;
+}
+
+pre .comment {
+    color: #999;
+}
+
+pre .title {
+    color: #333;
+}
+
+pre .variable,
+pre .attribute,
+pre .tag,
+pre .regexp,
+pre .ruby .constant,
+pre .xml .tag .title,
+pre .xml .pi,
+pre .xml .doctype,
+pre .html .doctype,
+pre .css .id,
+pre .css .class,
+pre .css .pseudo {
+    color: #006;
+}
+
+pre .number,
+pre .preprocessor,
+pre .built_in,
+pre .literal,
+pre .params,
+pre .constant {
+    color: #69c;
+}
+
+pre .class,
+pre .ruby .class .title,
+pre .css .rules .attribute {
+    color: #006;
+}
+
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .ruby .symbol,
+pre .xml .cdata {
+    color: #006;
+}
+
+pre .css .hexcolor {
+    color: #6cc;
+}
+
+pre .function,
+pre .python .decorator,
+pre .python .title,
+pre .ruby .function .title,
+pre .ruby .title .keyword,
+pre .perl .sub,
+pre .javascript .title,
+pre .coffeescript .title {
+    color: #69c;
+}
+
+pre .keyword,
+pre .csharp,
+pre .javascript .function {
+    color: #A71D5D;
+}

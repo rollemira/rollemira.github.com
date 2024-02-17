@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Write code, do things, repeat - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/page/2/"/>
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      
+  <!-- One -->
+  <!--
+  <section id="one">
+    <header class="major">
+      <h2>Welcome to Ira Mellor (dot) Com</h2>
+    </header>
+    <p>
+        Here is where you can find some of my recent work, social media links (lower left), dabblings in technology and any other general thoughts I choose to make public. 
+    </p>
+    <ul class="actions">
+      <li><a href="/about" class="button">About Me</a></li>    </ul>
+  </section>
+  -->
+  
+    
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          09/23/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/09/23/ASP-NET-Ajax-JQuery-JSON-Date-Serialization/">ASP.NET Ajax, JQuery &amp; JSON Date Serialization</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A little while back I came across a great post on how to use <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a> to do <a target="_blank" rel="noopener" href="http://encosia.com/2008/08/20/easily-build-powerful-client-side-ajax-paging-using-jquery/">more efficient client side paging by Dave Ward</a>. The sample shows you how to use <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a> to do Ajax callbacks for client side paging using a grid template. After downloading the demo and parsing through it all, I found a lot of things I really liked and even came across a little gotchya with the way ASP.NET serializes dates in JSON.</p>
+<p>One part I really enjoyed about this sample is that your objects on the server are translated into client side objects. So Order.OrderID or Order.ShippingAddress.ShipName would work the same on the client and server side of the programming. The <a target="_blank" rel="noopener" href="http://jtemplates.tpython.com/">jtemplates</a> add-in allows you to name your active object of the collection you are looping through a lot like .NET like so:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    &#123;#foreach $T.d as order&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.OrderID&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipName&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.OrderDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.RequiredDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipCountry&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;#/for&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure><br>As you can see the order object is used in the <a target="_blank" rel="noopener" href="http://jtemplates.tpython.com/">jtemplates</a> code just like in .NET code.</p>
+<p>You may have noticed the DateDeserialize() function followed by the extension method .format() in the snipped above. This is due to some date deserialization issues I ran into. The signature for the DateDeserialize method is as so:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">DateDeserialize</span>(<span class="params">dateStr</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">&#x27;new&#x27;</span> + dateStr.<span class="title function_">replace</span>(<span class="regexp">/\//g</span>, <span class="string">&#x27; &#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>This method is basically returning the evaluation of the date returned by the .NET framework (ex: /Date(894427200000)/), replacing the / with a space with the keyword &quot;new&quot; in front of it. This will return us a JavaScript Date object. Then I&#39;m using the .format() extension method from the included MSAjax framework. It took me a little while to figure out, but once I did I fell in love. You can&#39;t put a price on full on object-oriented programming!</p>
+<p>Special thanks to <a target="_blank" rel="noopener" href="http://www.encosia.com/">Dave Ward</a> for opening my eyes to the power of <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a>!</p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2008/09/23/ASP-NET-Ajax-JQuery-JSON-Date-Serialization/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/asp-net/" class="button small">asp.net</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          08/26/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/08/26/LINQ-Distinct-a-DataTable-and-the-IEqualityComparer/">LINQ Distinct, a DataTable and the IEqualityComparer</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In a recent situation I was trying to pull some aggregates out of a DataTable using LINQ. I needed to get the rows of the DataTable with a Distinct clause, but my aggregates would be on other columns of the row. The problem is that when you call LINQ’s Distinct() extension method with no arguments, it uses the &quot;default IEqualityComparer&quot;. This means that it will work if you use the Select() extension method, only returning the column you want the distinct on. Well that works great, unless you need more columns from the DataTable.</p>
+<p>The solution here is simple. Write a custom DataRow comparer that compares the DataRow against the column you are trying to put the distinct on. Here is an example:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonDataRowComparer</span> : <span class="title">IEqualityComparer</span>&lt;<span class="title">DataRow</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> IEqualityComparer&lt;DataRow&gt; Members</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">DataRow x, DataRow y</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (x.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>) == y.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params">DataRow obj</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.ToString().GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Once we inherit IEqualityComparer&lt;T&gt; (T being the type we want to do the comparison on) all we do is fill in the Equals() and the GetHashCode() methods. In the Equals() method, we just tell the DataRows to compare the fields &quot;PersonID&quot; and return if they are equal. This will tell LINQ if the DataRow is distinct or not.</p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2008/08/26/LINQ-Distinct-a-DataTable-and-the-IEqualityComparer/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/linq/" class="button small">linq</a> <a href="/tags/c/" class="button small">c#</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          06/03/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/06/03/Strongly-Typed-Dynamic-User-Controls/">Strongly Typed Dynamic User Controls</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A short time ago I was confronted with a serious problem. What I needed to do was dynamically choose a UserControl as well as fire methods from that UserControl. The problem lies in the fact that a UserControl does not implement my custom methods that I needed for my controls. Each control was similar and would have the same methods but it would have different display characteristics.</p>
+<p>That was when I had a small epiphany. Why can’t I just make an abstract base class? Well the answer is you can! Sometimes I am prone to forget how .NET allows me to customize pre-defined classes. What we can do is create an abstract base class that inherits the UserControl class, then have our UserControls inherit from our base class.</p>
+<p>First we will create our abstract base class.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Configuration;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Security;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls.WebParts;</span><br><span class="line"><span class="keyword">using</span> System.Xml.Linq;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Base class to be inherited by a UserControl that displays the date</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">DateTimeDisplayControl</span> : <span class="title">UserControl</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Updates the date time inside the user control.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">UpdateDateTime</span>()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>So in the snippet above, we have created a class called DateTimeDisplayControl. This inherits from UserControl and will have to override the abstract method UpdateDateTime().</p>
+<p>Now we can create a couple of UserControls that inherit from our DisplayDateTimeControl class. The first control will be called &quot;ControlOne&quot;.</p>
+<p>Here is the *.ascx code:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ Control Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; CodeFile=&quot;ControlOne.ascx.cs&quot; Inherits=&quot;UserControls_ControlOne&quot; %&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>User control one<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">asp:UpdatePanel</span> <span class="attr">ID</span>=<span class="string">&quot;udp1&quot;</span>  <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> <span class="attr">UpdateMode</span>=<span class="string">&quot;Conditional&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ContentTemplate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">asp:Label</span> <span class="attr">ID</span>=<span class="string">&quot;lblDateTime&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ContentTemplate</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">asp:UpdatePanel</span>&gt;</span></span><br></pre></td></tr></table></figure><br>Here is the code behind:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Configuration;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Security;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls.WebParts;</span><br><span class="line"><span class="keyword">using</span> System.Xml.Linq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> <span class="title">UserControls_ControlOne</span> : <span class="title">DateTimeDisplayControl</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!Page.IsPostBack)</span><br><span class="line">            UpdateDateTime();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">UpdateDateTime</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        lblDateTime.Text = DateTime.Now.ToString();</span><br><span class="line">        udp1.Update();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>As you can see, ControlOne contains an UpdatePanel with a Label inside of it. The Label will display the date and time. We will call our second control &quot;ControlTwo&quot; and it will look exactly like ControlOne, only it will say &quot;User control two&quot; inside of it.</p>
+<p>Now we will create the actual *.aspx page to display the controls.</p>
+<p>Here is the <em>.aspx code<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ Page Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot;  CodeFile=&quot;Default.aspx.cs&quot; Inherits=&quot;_Default&quot; %&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span> <span class="string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.w3.org/1999/xhtml<span class="symbol">&amp;quot;</span>&gt;</span></span></span><br><span class="line"><span class="string"><span class="tag">&lt;head runat=&quot;</span><span class="attr">server</span>&quot;&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Strongly Typed Dynamic User Controls<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;form1&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">asp:ScriptManager</span> <span class="attr">ID</span>=<span class="string">&quot;sm1&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">asp:UpdatePanel</span> <span class="attr">ID</span>=<span class="string">&quot;udp&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> <span class="attr">UpdateMode</span>=<span class="string">&quot;Conditional&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ContentTemplate</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">asp:Panel</span> <span class="attr">ID</span>=<span class="string">&quot;pnlContent&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ContentTemplate</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Triggers</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">asp:AsyncPostBackTrigger</span> <span class="attr">ControlID</span>=<span class="string">&quot;btnUseControlOne&quot;</span> <span class="attr">EventName</span>=<span class="string">&quot;Click&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">asp:AsyncPostBackTrigger</span> <span class="attr">ControlID</span>=<span class="string">&quot;btnUseControlTwo&quot;</span> <span class="attr">EventName</span>=<span class="string">&quot;Click&quot;</span> /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">asp:AsyncPostBackTrigger</span> <span class="attr">ControlID</span>=<span class="string">&quot;btnUpdateDateTime&quot;</span> <span class="attr">EventName</span>=<span class="string">&quot;Click&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Triggers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">asp:UpdatePanel</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">&quot;btnUseControlOne&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> <span class="attr">Text</span>=<span class="string">&quot;Use Control One&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">onclick</span>=<span class="string">&quot;btnUseControlOne_Click&quot;</span> /&gt;</span><span class="symbol">&amp;nbsp;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">&quot;btnUseControlTwo&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> <span class="attr">Text</span>=<span class="string">&quot;Use Control Two&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">onclick</span>=<span class="string">&quot;btnUseControlTwo_Click&quot;</span> /&gt;</span><span class="symbol">&amp;nbsp;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">&quot;btnUpdateDateTime&quot;</span> <span class="attr">runat</span>=<span class="string">&quot;server&quot;</span> <span class="attr">Text</span>=<span class="string">&quot;Update Content&quot;</span></span></span><br><span class="line"><span class="tag">                <span class="attr">onclick</span>=<span class="string">&quot;btnUpdateDateTime_Click&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><br>Here is the code behind:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Configuration;</span><br><span class="line"><span class="keyword">using</span> System.Data;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Security;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls;</span><br><span class="line"><span class="keyword">using</span> System.Web.UI.WebControls.WebParts;</span><br><span class="line"><span class="keyword">using</span> System.Xml.Linq;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">partial</span> <span class="keyword">class</span> _<span class="title">Default</span> : <span class="title">System.Web.UI.Page</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> _controlVirtualPath = <span class="built_in">string</span>.Empty;</span><br><span class="line">    <span class="keyword">private</span> DateTimeDisplayControl _DateTimeDisplayControl = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">string</span> ControlVirtualPath</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(_controlVirtualPath))</span><br><span class="line">                _controlVirtualPath = ViewState[<span class="string">&quot;ControlVirtualPath&quot;</span>].ToString();</span><br><span class="line">            ViewState[<span class="string">&quot;ControlVirtualPath&quot;</span>] = _controlVirtualPath;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">string</span>.IsNullOrEmpty(_controlVirtualPath))</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> ApplicationException(<span class="string">&quot;The control virtual path was not found&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> _controlVirtualPath;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> DateTimeDisplayControl LoadedAjaxControl</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (_DateTimeDisplayControl == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                _DateTimeDisplayControl = (DateTimeDisplayControl)Page.LoadControl(ControlVirtualPath);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> _DateTimeDisplayControl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoadAndDisplayUserControl</span>()</span></span><br><span class="line">    &#123;</span><br><span class="line">        pnlContent.Controls.Add(LoadedAjaxControl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">LoadAndDisplayUserControl</span>(<span class="params"><span class="built_in">string</span> controlVirtualPath</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        _controlVirtualPath = controlVirtualPath;</span><br><span class="line">        pnlContent.Controls.Add(LoadedAjaxControl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!Page.IsPostBack)</span><br><span class="line">            LoadAndDisplayUserControl(<span class="string">&quot;~/UserControls/ControlOne.ascx&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">btnUseControlOne_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        LoadAndDisplayUserControl(<span class="string">&quot;~/UserControls/ControlOne.ascx&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">btnUseControlTwo_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        LoadAndDisplayUserControl(<span class="string">&quot;~/UserControls/ControlTwo.ascx&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">btnUpdateDateTime_Click</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        LoadAndDisplayUserControl();</span><br><span class="line">        LoadedAjaxControl.UpdateDateTime();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>As you may see, the </em>.aspx page will load up ControlOne by default. There are 3 buttons on the page that will allow you to swap out ControlOne and ControlTwo as well as call the UpdateDateTime() method of the controls.</p>
+<p>That is all there is to it! One important note is that I am using a private property to get the loaded control, this is important to note because you will need to call that UpdateDateTime() method on the instance of the control that you rendered to the page. I don’t know why I didn’t think of this long ago, but I hope you will find it as useful as I did!</p>
+<p>Happy coding!</p>
+
+      
+      
+      <a class="article-comments" href="/2008/06/03/Strongly-Typed-Dynamic-User-Controls/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/asp-net/" class="button small">asp.net</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/c/" class="button small">c#</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          04/21/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/04/21/Using-The-Event-Model-Throwing-and-Handling-Custom-Events/">Using the Event Model: Throwing and Handling Custom Events</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>If you haven’t tried using the event model in .NET you don’t know what you’re missing. If this is the case, then I’m glad you’re here. Events are a very nice way to add flexibility to your projects and eliminate cross cutting concerns. You can use them for a variety of things including validation and logging. You can think of an event as sort of an All Points Bulletin (APB) throughout your application. Once you declare and throw an event, every place in your code that has an event handler for that event will be executed. Events can be both static or per instance. You use events every time you build an ASP.NET website. The Page_Load event, Button_Click event, etc… It is like an application wide notification that something is happening. </p>
+<p>An important note is that all event handlers that have been moved to the call stack will be fired. So when you call out to your custom event, all objects that are in the call stack with an event handler for that event will be fired. Another thing to keep in mind is that there is no guaranteed order in which the events will be fired. If you are in need of doing something that requires a specific order, you should use more events or take another approach entirely. </p>
+<p>In this project, we will create some events and handle them in a logging system. The first thing we will need to do is set up an event delegate to strongly type our event. Along with doing that, I like to setup some custom event arguments that will take in the object(s) that I will be dealing with during the event.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System; <span class="keyword">using</span> System.Collections.Generic; </span><br><span class="line"> </span><br><span class="line"><span class="comment">//Delegate for a PersonEvent </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="keyword">void</span> <span class="title">PersonEvent</span>(<span class="params">PersonEventArgs e</span>)</span>; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonEventArgs</span> : <span class="title">EventArgs</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonEventArgs</span>()</span>     </span><br><span class="line">    &#123;              </span><br><span class="line">    </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonEventArgs</span>(<span class="params">Person person</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="keyword">this</span>.Person = person;     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PersonEventArgs</span>(<span class="params">List&lt;Person&gt; personList</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="keyword">this</span>.PersonList = personList;     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Person the action will be on     </span></span><br><span class="line">    <span class="keyword">public</span> Person Person &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//List of person the action will be on     </span></span><br><span class="line">    <span class="keyword">public</span> List&lt;Person&gt; PersonList &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//For canceling action     </span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">bool</span> Cancel &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Ok, Now all we have to do is declare and throw our events. When declaring our events, they will be of the type PersonEvent.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections.Generic; </span><br><span class="line"><span class="keyword">using</span> System.ComponentModel; </span><br><span class="line"> </span><br><span class="line">[<span class="meta">DataObject(true)</span>] </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonBLL</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="comment">//Declare events     </span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Pre_Get;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Post_Get;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Pre_Insert;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Post_Insert;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Pre_Update;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Post_Update;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Pre_Delete;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">event</span> PersonEvent Post_Delete;     </span><br><span class="line">    </span><br><span class="line">    [<span class="meta">DataObjectMethod(DataObjectMethodType.Select)</span>]     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;PersonPresentationShell&gt; <span class="title">GetPeople</span>()</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Pre_Get != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs();             </span><br><span class="line">            Pre_Get(args);             </span><br><span class="line">            <span class="keyword">if</span> (args.Cancel) <span class="keyword">return</span> <span class="literal">null</span>;         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        List&lt;PersonPresentationShell&gt; result = <span class="keyword">new</span> List&lt;PersonPresentationShell&gt;();         </span><br><span class="line">        List&lt;Person&gt; personList = DataAccessFactory.GetPeople();         </span><br><span class="line">        <span class="keyword">foreach</span> (Person item <span class="keyword">in</span> personList)         </span><br><span class="line">        &#123;             </span><br><span class="line">            result.Add(<span class="keyword">new</span> PersonPresentationShell(item));         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Post_Get != <span class="literal">null</span>)         </span><br><span class="line">        &#123;           </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(personList);             </span><br><span class="line">            Post_Get(args);             </span><br><span class="line">            <span class="keyword">if</span> (args.Cancel) <span class="keyword">return</span> <span class="literal">null</span>;         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    [<span class="meta">DataObjectMethod(DataObjectMethodType.Update)</span>]     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">UpdatePerson</span>(<span class="params">PersonPresentationShell p</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Pre_Update != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Pre_Update(args);             </span><br><span class="line">            <span class="keyword">if</span> (args.Cancel) <span class="keyword">return</span>;         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        DataAccessFactory.UpdatePerson(p.Person);         </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Post_Update != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Post_Update(args);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    [<span class="meta">DataObjectMethod(DataObjectMethodType.Delete)</span>]     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DeletePerson</span>(<span class="params">PersonPresentationShell p</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Pre_Delete != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Pre_Delete(args);             </span><br><span class="line">            <span class="keyword">if</span> (args.Cancel) <span class="keyword">return</span>;         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        DataAccessFactory.DeletePerson(p.Person);         </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Post_Delete != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Post_Delete(args);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    [<span class="meta">DataObjectMethod(DataObjectMethodType.Insert)</span>]     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">InsertPerson</span>(<span class="params">PersonPresentationShell p</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Pre_Insert != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Pre_Insert(args);             </span><br><span class="line">            <span class="keyword">if</span> (args.Cancel) <span class="keyword">return</span>;         </span><br><span class="line">        &#125;         </span><br><span class="line">        </span><br><span class="line">        DataAccessFactory.InsertPerson(p.Person);         </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//Call out to event handler         </span></span><br><span class="line">        <span class="keyword">if</span> (Post_Insert != <span class="literal">null</span>)         </span><br><span class="line">        &#123;             </span><br><span class="line">            PersonEventArgs args = <span class="keyword">new</span> PersonEventArgs(p.Person);             </span><br><span class="line">            Post_Insert(args);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>There we have it! An event will now be thrown before and after every get, insert, update and delete. Now we have to set up some event handlers in our logging object.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System; </span><br><span class="line"><span class="keyword">using</span> System.IO; </span><br><span class="line"><span class="keyword">using</span> System.Web; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Logger</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="comment">//Set the log file location     </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">string</span> _logFileLocation = HttpContext.Current.Server.MapPath(<span class="string">&quot;~/App_Data/logfile.log&quot;</span>);     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="title">Logger</span>()</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="comment">//Attach event handlers         </span></span><br><span class="line">        PersonBLL.Pre_Delete += <span class="keyword">new</span> PersonEvent(PersonBLL_Pre_Delete);         </span><br><span class="line">        PersonBLL.Post_Delete += <span class="keyword">new</span> PersonEvent(PersonBLL_Post_Delete);         </span><br><span class="line">        PersonBLL.Pre_Get += <span class="keyword">new</span> PersonEvent(PersonBLL_Pre_Get);         </span><br><span class="line">        PersonBLL.Post_Get += <span class="keyword">new</span> PersonEvent(PersonBLL_Post_Get);         </span><br><span class="line">        PersonBLL.Pre_Insert += <span class="keyword">new</span> PersonEvent(PersonBLL_Pre_Insert);         </span><br><span class="line">        PersonBLL.Post_Insert += <span class="keyword">new</span> PersonEvent(PersonBLL_Post_Insert);         </span><br><span class="line">        PersonBLL.Pre_Update += <span class="keyword">new</span> PersonEvent(PersonBLL_Pre_Update);         </span><br><span class="line">        PersonBLL.Post_Update += <span class="keyword">new</span> PersonEvent(PersonBLL_Post_Update);     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PersonBLL_Post_Update</span>(<span class="params">PersonEventArgs e</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        WriteToLogFile(<span class="string">&quot;PersonId: &quot;</span> + e.Person.PersonId.ToString() + <span class="string">&quot; - &quot;</span> + e.Person.FirstName + <span class="string">&quot; &quot;</span> + e.Person.LastName </span><br><span class="line">            + <span class="string">&quot; was updated”);     </span></span><br><span class="line"><span class="string">    &#125;     </span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    static void PersonBLL_Pre_Update(PersonEventArgs e)     </span></span><br><span class="line"><span class="string">    &#123;         </span></span><br><span class="line"><span class="string">        WriteToLogFile(&quot;</span>PersonId: <span class="string">&quot; + e.Person.PersonId.ToString() + &quot;</span> - <span class="string">&quot; + e.Person.FirstName + &quot;</span> <span class="string">&quot; + e.Person.LastName </span></span><br><span class="line"><span class="string">            + &quot;</span> <span class="keyword">is</span> about to be updated”);     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PersonBLL_Post_Insert</span>(<span class="params">PersonEventArgs e</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        WriteToLogFile(<span class="string">&quot;PersonId: &quot;</span> + e.Person.PersonId.ToString() + <span class="string">&quot; - &quot;</span> + e.Person.FirstName + <span class="string">&quot; &quot;</span> + e.Person.LastName </span><br><span class="line">            + <span class="string">&quot; was inserted”);     </span></span><br><span class="line"><span class="string">    &#125;     </span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    static void PersonBLL_Pre_Insert(PersonEventArgs e)     </span></span><br><span class="line"><span class="string">    &#123;         </span></span><br><span class="line"><span class="string">        WriteToLogFile(&quot;</span>PersonId: <span class="string">&quot; + e.Person.PersonId.ToString() + &quot;</span> - <span class="string">&quot; + e.Person.FirstName + &quot;</span> <span class="string">&quot; + e.Person.LastName </span></span><br><span class="line"><span class="string">            + &quot;</span> <span class="keyword">is</span> about to be inserted”);     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PersonBLL_Post_Get</span>(<span class="params">PersonEventArgs e</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        WriteToLogFile(<span class="string">&quot;The people were gotten”);     </span></span><br><span class="line"><span class="string">    &#125;     </span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    static void PersonBLL_Pre_Get(PersonEventArgs e)     </span></span><br><span class="line"><span class="string">    &#123;         </span></span><br><span class="line"><span class="string">        WriteToLogFile(&quot;</span>The people are about to be gotten”);     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">PersonBLL_Post_Delete</span>(<span class="params">PersonEventArgs e</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        WriteToLogFile(<span class="string">&quot;PersonId: &quot;</span> + e.Person.PersonId.ToString() + <span class="string">&quot; - &quot;</span> + e.Person.FirstName + <span class="string">&quot; &quot;</span> + e.Person.LastName </span><br><span class="line">            + <span class="string">&quot; was deleted”);     </span></span><br><span class="line"><span class="string">    &#125;     </span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    static void PersonBLL_Pre_Delete(PersonEventArgs e)     </span></span><br><span class="line"><span class="string">    &#123;         </span></span><br><span class="line"><span class="string">        WriteToLogFile(&quot;</span>PersonId: <span class="string">&quot; + e.Person.PersonId.ToString() + &quot;</span> - <span class="string">&quot; + e.Person.FirstName + &quot;</span> <span class="string">&quot; + e.Person.LastName </span></span><br><span class="line"><span class="string">            + &quot;</span> <span class="keyword">is</span> about to be deleted”);     </span><br><span class="line">    &#125;     </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">WriteToLogFile</span>(<span class="params"><span class="built_in">string</span> message</span>)</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        DateTime now = DateTime.Now;         </span><br><span class="line">        <span class="keyword">using</span>(StreamWriter sw = File.AppendText(_logFileLocation))         </span><br><span class="line">        &#123;             </span><br><span class="line">            sw.WriteLine(now.ToString() + <span class="string">&quot; - &quot;</span> + message);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Finally, we have to create an instance of our logger class in the Global.asax file to attach our event handlers to our events when the application starts.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Application_Start</span>(<span class="params"><span class="built_in">object</span> sender, EventArgs e</span>)</span>  </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="comment">//Create an instance of the logger     </span></span><br><span class="line">    <span class="comment">//To attach event handlers     </span></span><br><span class="line">    Logger logger = <span class="keyword">new</span> Logger(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>There we have it. Now on every CRUD operation in our application, a log entry will be written with some data about that action. Once you get the hang of it events become extremely useful. One big instance I like to use it for is authorization of performing an action in a membership and roles scenario. </p>
+<p>Hope this helps! </p>
+
+      
+      
+      <a class="article-comments" href="/2008/04/21/Using-The-Event-Model-Throwing-and-Handling-Custom-Events/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/net/" class="button small">.net</a> <a href="/tags/c/" class="button small">c#</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          04/14/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/04/14/Clean-Up-ASP-NETs-Head-Tag-With-ControlAdapters/">Clean Up ASP.NETs Head Tag With ControlAdapters</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ok, if you’re anything like me you absolutely gag when you see the rendered content of the ASP.NET head tag. It is all rendered out inline for some reason. I’m not 100% sure about the affects of it on web marketing, but I know one thing is for sure… It certainly doesn’t help your rankings any. At the very least it looks gross and it can be easily fixed with some portable c# files that you can include in any project. I found a reference <a target="_blank" rel="noopener" href="http://blogs.x2line.com/al/archive/2007/01/31/2816.aspx">here</a> about it, so I picked it up and ran with it. </p>
+<p>A couple of good things to note is the placement of some key pieces for control adapters in the .NET framework. The ControlAdapter class should be inherited for every control adapter you create, it can be found in the System.Web.UI.Adapters namespace. All of the tags we will be overriding belong to the System.Web.UI.HtmlControls namespace. </p>
+<p>The first tag we will override is the head tag itself.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlHeadAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlHead headTag = (HtmlHead)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.WriteBeginTag(<span class="string">&quot;head&quot;</span>);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(headTag.ID))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;id&quot;</span>, headTag.ClientID);             </span><br><span class="line">            writer.Write(HtmlTextWriter.TagRightChar);             </span><br><span class="line">            <span class="keyword">foreach</span> (Control item <span class="keyword">in</span> headTag.Controls)                 </span><br><span class="line">                item.RenderControl(writer);             </span><br><span class="line">            writer.WriteLine(<span class="string">&quot;&quot;</span>);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Next we are on to the title tag.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlTitleAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            writer.WriteLine();             </span><br><span class="line">            writer.WriteFullBeginTag(<span class="string">&quot;title&quot;</span>);             </span><br><span class="line">            writer.Write(Page.Title);             </span><br><span class="line">            writer.WriteEndTag(<span class="string">&quot;title&quot;</span>);             </span><br><span class="line">            writer.WriteLine();         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Now the link tags.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlLinkAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlLink linkTag = (HtmlLink)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.Write(<span class="string">&quot;&lt;link&quot;</span>);             </span><br><span class="line">            AttributeCollection attributes = linkTag.Attributes;             </span><br><span class="line">            IEnumerator keys = linkTag.Attributes.Keys.GetEnumerator();             </span><br><span class="line">            <span class="keyword">while</span> (keys.MoveNext())             </span><br><span class="line">            &#123;                 </span><br><span class="line">                <span class="built_in">string</span> key = (<span class="built_in">string</span>)keys.Current;                 </span><br><span class="line">                <span class="keyword">if</span> (key.ToLower() == <span class="string">&quot;href&quot;</span> &amp;&amp; attributes[key].Contains(<span class="string">&quot;~&quot;</span>))                     </span><br><span class="line">                    writer.WriteAttribute(key, linkTag.ResolveClientUrl(attributes[key]));                 </span><br><span class="line">                <span class="keyword">else</span>                     </span><br><span class="line">                    writer.WriteAttribute(key, attributes[key]);             </span><br><span class="line">                writer.WriteLine(<span class="string">&quot; /&gt;&quot;</span>);         </span><br><span class="line">            &#125;     </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Last but not least, the meta tags.<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web.UI; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.Adapters; </span><br><span class="line"><span class="keyword">using</span> System.Web.UI.HtmlControls; </span><br><span class="line"><span class="keyword">namespace</span> <span class="title">Rollem.ControlAdapters</span> </span><br><span class="line">&#123;     </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HtmlMetaAdapter</span> : <span class="title">ControlAdapter</span>     </span><br><span class="line">    &#123;         </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">Render</span>(<span class="params">HtmlTextWriter writer</span>)</span>         </span><br><span class="line">        &#123;             </span><br><span class="line">            HtmlMeta metaTag = (HtmlMeta)<span class="keyword">this</span>.Control;             </span><br><span class="line">            writer.WriteBeginTag(<span class="string">&quot;meta&quot;</span>);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(metaTag.HttpEquiv))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;http-equiv&quot;</span>, metaTag.HttpEquiv);             </span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">string</span>.IsNullOrEmpty(metaTag.Name))                 </span><br><span class="line">                writer.WriteAttribute(<span class="string">&quot;name&quot;</span>, metaTag.Name);             </span><br><span class="line">            writer.WriteAttribute(<span class="string">&quot;content&quot;</span>, metaTag.Content);             </span><br><span class="line">            writer.WriteLine(HtmlTextWriter.SelfClosingTagEnd);         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Now all we have to do is setup a *.browser file in the App_Browsers folder to map the control adapter overrides.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">browsers</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;<span class="name">browser</span> <span class="attr">refID</span>=<span class="string">&quot;Default&quot;</span>&gt;</span>         </span><br><span class="line">        <span class="tag">&lt;<span class="name">controlAdapters</span>&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlHead&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlHeadAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlTitle&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlTitleAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlMeta&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlMetaAdapter&quot;</span> /&gt;</span>             </span><br><span class="line">            <span class="tag">&lt;<span class="name">adapter</span> <span class="attr">controlType</span>=<span class="string">&quot;System.Web.UI.HtmlControls.HtmlLink&quot;</span>                 </span></span><br><span class="line"><span class="tag">                    <span class="attr">adapterType</span>=<span class="string">&quot;Rollem.ControlAdapters.HtmlLinkAdapter&quot;</span> /&gt;</span>         </span><br><span class="line">        <span class="tag">&lt;/<span class="name">controlAdapters</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;/<span class="name">browser</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">browsers</span>&gt;</span></span><br></pre></td></tr></table></figure><br>Now if we right click and view source we will see a nice clean head tag. </p>
+<p>Don’t live a moment longer with that ugly ASP.NET rendered head tag!&nbsp; </p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2008/04/14/Clean-Up-ASP-NETs-Head-Tag-With-ControlAdapters/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/asp-net/" class="button small">asp.net</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+  <br />
+  
+
+
+  
+    <br/><br />
+    <ul class="actions">
+      <li><a href="/archives/page/2" class="button">View Archives</a></li>    </ul>
+  </section>
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/count.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>

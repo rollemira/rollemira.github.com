@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <!-- Title -->
+    
+    <title>Tag: sql - Ira Mellor (dot) Com</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="canonical" href="https://iramellor.com/tags/sql/"/>
+    <!--Description-->
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ira Mellor">
+    
+
+    <!--Favicon-->
+    
+      <link rel="icon" href="/images/favicon.png">
+    
+
+    <!--Open Graph Title-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Ira Mellor (dot) Com"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+<link rel="stylesheet" href="https://iramellor.com/css/highlight.min.css">
+
+    
+
+    <!--[if lt IE 8]>
+        
+<script src="/js/ie/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        
+<link rel="stylesheet" href="/css/ie8.min.css">
+
+    <![endif]-->
+
+    <script type="text/javascript">
+        // post load scripts helper
+        var _scriptsToPostLoad = window._scriptsToPostLoad = [];
+        var appendScriptToBody = window.appendScriptToBody = function (src) { 
+            _scriptsToPostLoad.push(src);
+        };
+        //running local helper
+        var isRunningLocal = window.isRunningLocal =
+            (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1");
+    </script>
+
+    
+    <script type="text/javascript">
+        if ((!window.isRunningLocal) && (window.location.protocol != "https:"))
+            window.location.protocol = "https";
+    </script>
+    
+
+
+    <!-- Google Analytics -->
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  if (!window.isRunningLocal) {
+    ga('create', 'UA-25639902-1', 'auto');
+    ga('send', 'pageview');
+  }
+</script>
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body id="top">
+
+    <!-- Header -->
+    <header id="header">
+  <div class="inner">
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <ul class="alt menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/archives">Archives</a></li>
+      
+      <li><a href="/about">About</a></li>
+      
+      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      
+      <li><a href="/assets/resume.pdf">Resume</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+    <!-- Main -->
+		<div id="main">
+
+      <!-- Main Content -->
+      
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          06/18/2009
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/">Avoiding the Database Deployment Nightmare</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts in the solution, there can be times when you can’t exactly remember what you changed and needs to go out with your project deployment to the production database. Deploying files is easy because of tools like <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a>, however deploying things to a database can get quite complicated. You could script both schemas and use <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a> to see the differences between the development database and the production database. But even doing that, you will still have to write a custom script to get the production database schema up to date.</p>
+<h3 id="Enter-xSql"><a href="#Enter-xSql" class="headerlink" title="Enter xSql"></a>Enter xSql</h3><p><a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/">xSQLSoftware</a> This is where a tool such as <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> can be extremely helpful. All that need be done is set up the connections, run the comparison, and then you can visually see what has changed between your development and live databases! No need to remember what you changed or any of that, just run the comparison and execute the change script. It will even allow you to save database snapshots before running your change scripts. You can see an excellent <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">walkthrough</a> <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">here</a>. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> also comes in a bundle with another one of their products, <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> or by it’s self. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> allows you to compare data differences between two databases.</p>
+<h3 id="The-Best-Part"><a href="#The-Best-Part" class="headerlink" title="The Best Part"></a>The Best Part</h3><p>All the goodness of the <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/LiteEdition.aspx">xSQL Bundle (xSQL Object and xSQL Data) Lite Edition</a> comes at a very affordable price <strong>FREE</strong>! If you only use SQL express edition then you can get the full bundle lite edition and it will work without any restrictions at all! However, if you need to use it against other versions of SQL Server it does have the following limitations:</p>
+<ul>
+<li>up to 25 tables</li>
+<li>up to 40 views</li>
+<li>up to 40 stored procedures</li>
+<li>up to 40 functions  </li>
+</ul>
+<p>If you are using it against a small database then you shouldn’t have any problems. Now if you have databases larger than this and are using SQL Server editions other than express, the product costs $399.00 for a single user license. BUT, after downloading it I was sent an email offering 30% off if I purchased the product within 7 days of the download. That brings the cost down to <strong>$280</strong>! Not too bad when you compare it with the prices of other comparable tools. So I ask you to go to the website and check it out if you haven’t already! <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com">http://www.xsqlsoftware.com</a></p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>After contacting the company about licensing, I was shown another one of their great tools. A little while back I wrote a post titled Finding Text in SQL Server Stored Procedures. They have a tool called <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a> that allows you to search for all object types, through the names and definitions, for strings. It will also do a search using regular expressions! Pretty powerful stuff for a <strong>FREE </strong>tool! Check it out here: <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a></p>
+<p>Happy Deployments!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/sql/" class="button small">sql</a> <a href="/tags/deployment/" class="button small">deployment</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2009" class="archive-year">2009</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          04/12/2009
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/">Finding Text in SQL Server Stored Procedures</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So, I’m sure you have been met with a similar scenario during development. You know the one that you have to rename a column or even drop a column in the database. This can be quite annoying if you are doing stored procedure based data access for your application. Once you change the column on the table, you have to figure out which stored procedures reference the column. They aren’t always tough to find most of the time, but sometimes you are dealing with a column that may be referenced in many stored procedures. Well thanks to my boss Cliff’s research and knowledge sharing, your search can be as easy as ours!</p>
+<p>The query:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">USE Northwind</span><br><span class="line">GO </span><br><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@SearchText</span> <span class="keyword">AS</span> <span class="type">VARCHAR</span>(<span class="number">50</span>)</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@SearchText</span> <span class="operator">=</span> <span class="string">&#x27;CustomerID&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">ROUTINE_NAME,</span><br><span class="line">ROUTINE_DEFINITION</span><br><span class="line"><span class="keyword">FROM</span> INFORMATION_SCHEMA.ROUTINES</span><br><span class="line"><span class="keyword">WHERE</span> ROUTINE_NAME <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">+</span> <span class="variable">@SearchText</span> <span class="operator">+</span> <span class="string">&#x27;%&#x27;</span></span><br><span class="line"><span class="keyword">OR</span> ROUTINE_DEFINITION <span class="keyword">LIKE</span> <span class="string">&#x27;%&#x27;</span> <span class="operator">+</span> <span class="variable">@SearchText</span> <span class="operator">+</span> <span class="string">&#x27;%&#x27;</span></span><br></pre></td></tr></table></figure><br>This query will return all the names and routine definitions of stored procedures that contain certain text. It is not really bound by column names but I needed a true development scenario. Run the query with what you are looking for and presto! All the stored procedures you will need to modify.</p>
+<p>Hope this helps!</p>
+
+      
+      
+      <a class="article-comments" href="/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/sql/" class="button small">sql</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year">
+          <a href="/archives/2008" class="archive-year">2008</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <div class="meta">
+  
+      <span class="date">
+          12/12/2008
+      </span>
+  
+
+  
+
+  
+
+
+</div>
+
+      
+    <h1 itemprop="name">
+        <a href="/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/">SQL Server Side Paging With a Validated Dynamic Order By</a>
+      </h1>
+  
+
+    </header>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So this is what it has come to anymore. Everyone is all about server side paging via SQL Server. As well they should be! It is so much faster and more efficient than having ADO or ADO.NET bring back a ton of records and then chop it to page it. However, there has always been some problems when trying to accomplish this task, especially using a SQL database that is pre 2005.</p>
+<p>This task is easier to accomplish in SQL 2005 and 2008 using the ROW_NUMBER() function. The part that gets flaky is having a dynamic order by clause in your SQL statement. Unfortunately, the only way to accomplish this is to write some dynamic SQL. In doing so, It can be hard to tell if the order by parameter received by the stored procedure is a valid one for the table you are selecting from.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Enter the &quot;IsValidOrderBy&quot; user-defined function. This is a little function that will tell you if the column and order in the dynamic order by parameter is a valid one for the select statement you are running.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> [dbo].[udf_OrderByExists] </span><br><span class="line">(</span><br><span class="line">    <span class="variable">@TableName</span> NVARCHAR(<span class="number">50</span>),</span><br><span class="line">    <span class="variable">@OrderBy</span> NVARCHAR(<span class="number">50</span>)</span><br><span class="line">)</span><br><span class="line"><span class="keyword">RETURNS</span> BIT</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">DECLARE</span> <span class="variable">@Result</span> BIT</span><br><span class="line">    <span class="keyword">SET</span> <span class="variable">@Result</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">DECLARE</span> <span class="variable">@TableColumns</span> <span class="keyword">TABLE</span></span><br><span class="line">    (</span><br><span class="line">        [ColumnNameAndSort] NVARCHAR(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line">    )</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="variable">@TableColumns</span></span><br><span class="line">    <span class="keyword">SELECT</span> [Name] </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> ID <span class="operator">=</span> OBJECT_ID(<span class="variable">@TableName</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="variable">@TableColumns</span></span><br><span class="line">    <span class="keyword">SELECT</span> [Name] <span class="operator">+</span> <span class="string">&#x27; ASC&#x27;</span> </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> ID <span class="operator">=</span> OBJECT_ID(<span class="variable">@TableName</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="variable">@TableColumns</span></span><br><span class="line">    <span class="keyword">SELECT</span> [Name] <span class="operator">+</span> <span class="string">&#x27; DESC&#x27;</span> </span><br><span class="line">    <span class="keyword">FROM</span> syscolumns </span><br><span class="line">    <span class="keyword">WHERE</span> ID <span class="operator">=</span> OBJECT_ID(<span class="variable">@TableName</span>)</span><br><span class="line"> </span><br><span class="line">    IF <span class="keyword">EXISTS</span>(<span class="keyword">SELECT</span> [ColumnNameAndSort] <span class="keyword">FROM</span> </span><br><span class="line">        <span class="variable">@TableColumns</span> <span class="keyword">WHERE</span> [ColumnNameAndSort] <span class="operator">=</span> <span class="variable">@OrderBy</span>)</span><br><span class="line">        <span class="keyword">SET</span> <span class="variable">@Result</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">RETURN</span> <span class="variable">@Result</span>    </span><br><span class="line"> </span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure><br>Here you can see that we are taking 2 inputs. The first one being the table name you are selecting from, and the second being the order by clause received by the stored procedure. The function will then return a bit telling you if the column and order was found for the table you are selecting from.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>A simple example of using this user defined function would be selecting from a table of products. In that case, your stored procedure could look like so<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> [dbo].[usp_GetProductsPaged]</span><br><span class="line">    <span class="variable">@SortExpression</span> NVARCHAR(<span class="number">50</span>),</span><br><span class="line">    <span class="variable">@PageIndex</span> <span class="type">INT</span>,</span><br><span class="line">    <span class="variable">@PageSize</span> <span class="type">INT</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- SET NOCOUNT ON added to prevent extra result sets from</span></span><br><span class="line"><span class="comment">-- interfering with SELECT statements.</span></span><br><span class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</span><br><span class="line"> </span><br><span class="line">IF ((<span class="keyword">SELECT</span> [dbo].[udf_OrderByExists](<span class="string">&#x27;dbo.Products&#x27;</span>, <span class="variable">@SortExpression</span>)) <span class="operator">=</span> <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">SET</span> <span class="variable">@SortExpression</span> <span class="operator">=</span> <span class="string">&#x27;Name&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">DECLARE</span> <span class="variable">@sql</span> <span class="keyword">AS</span> NVARCHAR(MAX),</span><br><span class="line">    <span class="variable">@ParamDefinition</span> <span class="keyword">AS</span> NVARCHAR(MAX),</span><br><span class="line">    <span class="variable">@StartRowIndex</span> <span class="type">INT</span>,</span><br><span class="line">    <span class="variable">@RecordCount</span> <span class="type">INT</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="variable">@RecordCount</span> <span class="operator">=</span> <span class="built_in">COUNT</span>([ProductID]) <span class="keyword">FROM</span> [Products]</span><br><span class="line"> </span><br><span class="line">IF <span class="variable">@PageIndex</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">SET</span> <span class="variable">@PageIndex</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">IF <span class="variable">@PageSize</span> <span class="operator">=</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">SET</span> <span class="variable">@PageSize</span> <span class="operator">=</span> <span class="variable">@RecordCount</span></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@StartRowIndex</span> <span class="operator">=</span> ((<span class="variable">@PageIndex</span> <span class="operator">*</span> <span class="variable">@PageSize</span>) <span class="operator">-</span> <span class="variable">@PageSize</span>) <span class="operator">+</span> <span class="number">1</span></span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@ParamDefinition</span> <span class="operator">=</span> N<span class="string">&#x27;@paramStartRowIndex INT, </span></span><br><span class="line"><span class="string">    @paramPageSize INT&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@sql</span> <span class="operator">=</span> N<span class="string">&#x27;SELECT</span></span><br><span class="line"><span class="string">    [ProductID],</span></span><br><span class="line"><span class="string">    [Name],</span></span><br><span class="line"><span class="string">    [Description],</span></span><br><span class="line"><span class="string">    [Price]</span></span><br><span class="line"><span class="string">FROM (SELECT</span></span><br><span class="line"><span class="string">    [ProductID],</span></span><br><span class="line"><span class="string">    [Name],</span></span><br><span class="line"><span class="string">    [Description],</span></span><br><span class="line"><span class="string">    [Price],</span></span><br><span class="line"><span class="string">    ROW_NUMBER() OVER(ORDER BY &#x27;</span> <span class="operator">+</span> <span class="variable">@SortExpression</span> <span class="operator">+</span> <span class="string">&#x27;) AS [RowNumber]</span></span><br><span class="line"><span class="string">FROM [Products]) AS [Prods]</span></span><br><span class="line"><span class="string">WHERE [RowNumber] BETWEEN @paramStartRowIndex</span></span><br><span class="line"><span class="string">        AND (@paramStartRowIndex + @paramPageSize) - 1&#x27;</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">-- For testing</span></span><br><span class="line"><span class="comment">--PRINT @sql</span></span><br><span class="line"><span class="comment">--PRINT @StartRowIndex</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">EXEC</span> sp_executesql <span class="variable">@sql</span>, </span><br><span class="line"><span class="variable">@ParamDefinition</span>, </span><br><span class="line"><span class="variable">@paramStartRowIndex</span> <span class="operator">=</span> <span class="variable">@StartRowIndex</span>, </span><br><span class="line"><span class="variable">@paramPageSize</span> <span class="operator">=</span> <span class="variable">@PageSize</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">SELECT</span> <span class="variable">@RecordCount</span> <span class="keyword">AS</span> [RecordCount]</span><br></pre></td></tr></table></figure><br>As you can see, by calling <strong>udf_OrderByExists </strong>and passing in the parameters, if the order by does not fit the table, we then change it to be something known and valid.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>With a simple and portable user defined function, we can ensure that the order by clauses going into our paging stored procedures are validated thus keeping integrity. It isn’t fun having to write and maintain dynamic SQL in stored procedures, but it can be done and also made a little bit safer. One last tip: Always use the sp_executesql, as this will tell the SQL server that the execution plan should be cached for re-use.</p>
+<p>Hope this helps! </p>
+
+      
+      
+      <a class="article-comments" href="/2008/12/12/SQL-Server-Side-Paging-With-A-Validated-Dynamic-Order-By/#disqus_thread">View Comments</a>
+      
+      
+
+
+<div class="tags">
+    <a href="/tags/code/" class="button small">code</a> <a href="/tags/sql/" class="button small">sql</a>
+</div>
+
+    </div>
+  </div>
+</article>
+
+  
+  
+    </div></section>
+  
+
+
+
+
+
+      <!-- Three - the contact form is on every page! -->
+        <!--<section id="three">-->
+                  <!--</section>-->
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+
+        <ul class="icons">
+            
+                <li><a href="https://www.linkedin.com/in/iramellor" class="icon fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://www.instagram.com/rollemira" class="icon fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+            
+            
+            
+                <li><a href="https://stackoverflow.com/users/87734/rollemira" class="icon fa-stack-overflow" target="_blank" ><span class="label">StackOverflow</span></a></li>
+            
+            
+                <li><a href="https://www.github.com/rollemira" class="icon fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+            
+            
+            
+            
+                <li><a href="https://iramellor.com/atom.xml" class="icon  fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+            
+        </ul>
+
+        <ul class="attributions">
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo Theme: <a href="http://livingos.com/" target="_blank">Tim Hyde</a></li>
+            <li>Powered By: <a href="http://hexo.io" target="_blank">Hexo</a></li>
+        </ul>
+
+        <div class="disclaimer">
+            Disclaimer: Unless otherwise stated or granted, all code downloads or samples from this site are licensed 
+            under the <a href="/assets/LICENSE.txt" target="_blank">MIT License</a>.
+            <div class="copyright">&copy; Ira Mellor. All rights reserved</div>
+        </div>
+    </div>
+</footer>
+
+        
+    </div>
+
+    <!-- After footer scripts -->
+    <!-- Scripts -->
+
+<script src="/js/jquery.min.js"></script>
+
+<script src="/js/jquery.poptrox.min.js"></script>
+
+<script src="/js/typeahead.min.js"></script>
+
+<script src="/js/skel.min.js"></script>
+
+<script src="/js/util.min.js"></script>
+
+<!--[if lte IE 8]>
+
+<script src="/js/ie/respond.min.js"></script>
+
+<![endif]-->
+
+
+<script src="/js/main.min.js"></script>
+
+<!-- Disqus Comments -->
+
+<script>
+    (function(local){
+        if (local) return;
+        var disqus_shortname = 'iramellor';
+        window.appendScriptToBody('//' + disqus_shortname + '.disqus.com/count.js');
+    })(window.isRunningLocal);
+</script>
+
+
+ 
+<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+<script>
+    (function(local){
+        if (local) return;
+        var pubid = 'imellor';
+        window.appendScriptToBody('//s7.addthis.com/js/300/addthis_widget.js#pubid=' + pubid);
+    })(window.isRunningLocal);
+</script>
+
+
+<!-- For outdated browsers -->
+<script> 
+    window.appendScriptToBody('//browser-update.org/update.min.js');
+</script>
+
+<script>
+function $winPostLoad() {
+    for (var i = 0; i < window._scriptsToPostLoad.length; i++) {
+        var src = window._scriptsToPostLoad[i];
+        var s = document.createElement("script"); 
+        s.src = src;
+        document.body.appendChild(s);
+    }
+}
+try {document.addEventListener("DOMContentLoaded", $winPostLoad, false)}
+catch(e){window.attachEvent("onload", $winPostLoad)}
+</script>
+
+</body>
+</html>
