@@ -56,14 +56,6 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/</loc>
-        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://iramellor.com/2011/09/19/From-Coder-to-PM-or-Architect/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -89,6 +81,14 @@
 
     <url>
         <loc>https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/</loc>
+        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://iramellor.com/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
