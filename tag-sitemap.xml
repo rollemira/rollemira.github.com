@@ -45,6 +45,13 @@
     </url>
 
     <url>
+        <loc>https://iramellor.com/tags/linq/</loc>
+        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://iramellor.com/tags/angular/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,13 +74,6 @@
 
     <url>
         <loc>https://iramellor.com/tags/career/</loc>
-        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://iramellor.com/tags/linq/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
