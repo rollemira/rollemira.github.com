@@ -37,7 +37,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
     
@@ -101,7 +101,8 @@
 
 
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Ira Mellor (dot) Com" type="application/atom+xml">
+</head>
 
 
 <body id="top">
@@ -109,7 +110,8 @@
     <!-- Header -->
     <header id="header">
   <div class="inner">
-    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>
+    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
     <ul class="alt menu">
       
       <li><a href="/">Home</a></li>
@@ -118,7 +120,7 @@
       
       <li><a href="/about">About</a></li>
       
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      <li><a href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
       
       <li><a href="/assets/resume.pdf">Resume</a></li>
       
@@ -161,17 +163,17 @@
 
 
 <!-- Content -->
-<p>So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts in the solution, there can be times when you can’t exactly remember what you changed and needs to go out with your project deployment to the production database. Deploying files is easy because of tools like <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a>, however deploying things to a database can get quite complicated. You could script both schemas and use <a target="_blank" rel="noopener" href="http://winmerge.org/">WinMerge</a> to see the differences between the development database and the production database. But even doing that, you will still have to write a custom script to get the production database schema up to date.</p>
-<h3 id="Enter-xSql"><a href="#Enter-xSql" class="headerlink" title="Enter xSql"></a>Enter xSql</h3><p><a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/">xSQLSoftware</a> This is where a tool such as <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> can be extremely helpful. All that need be done is set up the connections, run the comparison, and then you can visually see what has changed between your development and live databases! No need to remember what you changed or any of that, just run the comparison and execute the change script. It will even allow you to save database snapshots before running your change scripts. You can see an excellent <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">walkthrough</a> <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">here</a>. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> also comes in a bundle with another one of their products, <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> or by it’s self. <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> allows you to compare data differences between two databases.</p>
-<h3 id="The-Best-Part"><a href="#The-Best-Part" class="headerlink" title="The Best Part"></a>The Best Part</h3><p>All the goodness of the <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/LiteEdition.aspx">xSQL Bundle (xSQL Object and xSQL Data) Lite Edition</a> comes at a very affordable price <strong>FREE</strong>! If you only use SQL express edition then you can get the full bundle lite edition and it will work without any restrictions at all! However, if you need to use it against other versions of SQL Server it does have the following limitations:</p>
+<p>So, I have written before about how to put your database into version control using database projects in Visual Studio. Even while having the scripts in the solution, there can be times when you can’t exactly remember what you changed and needs to go out with your project deployment to the production database. Deploying files is easy because of tools like <a href="http://winmerge.org/">WinMerge</a>, however deploying things to a database can get quite complicated. You could script both schemas and use <a href="http://winmerge.org/">WinMerge</a> to see the differences between the development database and the production database. But even doing that, you will still have to write a custom script to get the production database schema up to date.</p>
+<h3 id="Enter-xSql"><a href="#Enter-xSql" class="headerlink" title="Enter xSql"></a>Enter xSql</h3><p><a href="http://www.xsqlsoftware.com/">xSQLSoftware</a> This is where a tool such as <a href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> can be extremely helpful. All that need be done is set up the connections, run the comparison, and then you can visually see what has changed between your development and live databases! No need to remember what you changed or any of that, just run the comparison and execute the change script. It will even allow you to save database snapshots before running your change scripts. You can see an excellent <a href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">walkthrough</a> <a href="http://www.xsqlsoftware.com/Tour.aspx?ProdId=xSQLObject&amp;idx=-1">here</a>. <a href="http://www.xsqlsoftware.com/Product/Sql_Schema_Compare.aspx">xSQL Object</a> also comes in a bundle with another one of their products, <a href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> or by it’s self. <a href="http://www.xsqlsoftware.com/Product/Sql_Data_Compare.aspx">xSQL Data</a> allows you to compare data differences between two databases.</p>
+<h3 id="The-Best-Part"><a href="#The-Best-Part" class="headerlink" title="The Best Part"></a>The Best Part</h3><p>All the goodness of the <a href="http://www.xsqlsoftware.com/LiteEdition.aspx">xSQL Bundle (xSQL Object and xSQL Data) Lite Edition</a> comes at a very affordable price <strong>FREE</strong>! If you only use SQL express edition then you can get the full bundle lite edition and it will work without any restrictions at all! However, if you need to use it against other versions of SQL Server it does have the following limitations:</p>
 <ul>
 <li>up to 25 tables</li>
 <li>up to 40 views</li>
 <li>up to 40 stored procedures</li>
-<li>up to 40 functions  </li>
+<li>up to 40 functions</li>
 </ul>
-<p>If you are using it against a small database then you shouldn’t have any problems. Now if you have databases larger than this and are using SQL Server editions other than express, the product costs $399.00 for a single user license. BUT, after downloading it I was sent an email offering 30% off if I purchased the product within 7 days of the download. That brings the cost down to <strong>$280</strong>! Not too bad when you compare it with the prices of other comparable tools. So I ask you to go to the website and check it out if you haven’t already! <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com">http://www.xsqlsoftware.com</a></p>
-<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>After contacting the company about licensing, I was shown another one of their great tools. A little while back I wrote a post titled Finding Text in SQL Server Stored Procedures. They have a tool called <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a> that allows you to search for all object types, through the names and definitions, for strings. It will also do a search using regular expressions! Pretty powerful stuff for a <strong>FREE </strong>tool! Check it out here: <a target="_blank" rel="noopener" href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a></p>
+<p>If you are using it against a small database then you shouldn’t have any problems. Now if you have databases larger than this and are using SQL Server editions other than express, the product costs $399.00 for a single user license. BUT, after downloading it I was sent an email offering 30% off if I purchased the product within 7 days of the download. That brings the cost down to <strong>$280</strong>! Not too bad when you compare it with the prices of other comparable tools. So I ask you to go to the website and check it out if you haven’t already! <a href="http://www.xsqlsoftware.com/">http://www.xsqlsoftware.com</a></p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h3><p>After contacting the company about licensing, I was shown another one of their great tools. A little while back I wrote a post titled Finding Text in SQL Server Stored Procedures. They have a tool called <a href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a> that allows you to search for all object types, through the names and definitions, for strings. It will also do a search using regular expressions! Pretty powerful stuff for a **FREE **tool! Check it out here: <a href="http://www.xsqlsoftware.com/Product/Sql_Database_Object_Search.aspx">xSQL Object Search</a></p>
 <p>Happy Deployments!</p>
 
 
@@ -190,7 +192,7 @@
     <hr />
     <h3>comment:</h3>
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 

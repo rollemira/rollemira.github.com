@@ -37,7 +37,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
     
@@ -101,7 +101,8 @@
 
 
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Ira Mellor (dot) Com" type="application/atom+xml">
+</head>
 
 
 <body id="top">
@@ -109,7 +110,8 @@
     <!-- Header -->
     <header id="header">
   <div class="inner">
-    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>
+    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
     <ul class="alt menu">
       
       <li><a href="/">Home</a></li>
@@ -118,7 +120,7 @@
       
       <li><a href="/about">About</a></li>
       
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      <li><a href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
       
       <li><a href="/assets/resume.pdf">Resume</a></li>
       
@@ -161,10 +163,14 @@
 
 
 <!-- Content -->
-<p>A little while back I came across a great post on how to use <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a> to do <a target="_blank" rel="noopener" href="http://encosia.com/2008/08/20/easily-build-powerful-client-side-ajax-paging-using-jquery/">more efficient client side paging by Dave Ward</a>. The sample shows you how to use <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a> to do Ajax callbacks for client side paging using a grid template. After downloading the demo and parsing through it all, I found a lot of things I really liked and even came across a little gotchya with the way ASP.NET serializes dates in JSON.</p>
-<p>One part I really enjoyed about this sample is that your objects on the server are translated into client side objects. So Order.OrderID or Order.ShippingAddress.ShipName would work the same on the client and server side of the programming. The <a target="_blank" rel="noopener" href="http://jtemplates.tpython.com/">jtemplates</a> add-in allows you to name your active object of the collection you are looping through a lot like .NET like so:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    &#123;#foreach $T.d as order&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.OrderID&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipName&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.OrderDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.RequiredDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipCountry&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;#/for&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure><br>As you can see the order object is used in the <a target="_blank" rel="noopener" href="http://jtemplates.tpython.com/">jtemplates</a> code just like in .NET code.</p>
-<p>You may have noticed the DateDeserialize() function followed by the extension method .format() in the snipped above. This is due to some date deserialization issues I ran into. The signature for the DateDeserialize method is as so:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">DateDeserialize</span>(<span class="params">dateStr</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">&#x27;new&#x27;</span> + dateStr.<span class="title function_">replace</span>(<span class="regexp">/\//g</span>, <span class="string">&#x27; &#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>This method is basically returning the evaluation of the date returned by the .NET framework (ex: /Date(894427200000)/), replacing the / with a space with the keyword &quot;new&quot; in front of it. This will return us a JavaScript Date object. Then I&#39;m using the .format() extension method from the included MSAjax framework. It took me a little while to figure out, but once I did I fell in love. You can&#39;t put a price on full on object-oriented programming!</p>
-<p>Special thanks to <a target="_blank" rel="noopener" href="http://www.encosia.com/">Dave Ward</a> for opening my eyes to the power of <a target="_blank" rel="noopener" href="http://www.jquery.com/">JQuery</a>!</p>
+<p>A little while back I came across a great post on how to use <a href="http://www.jquery.com/">JQuery</a> to do <a href="http://encosia.com/2008/08/20/easily-build-powerful-client-side-ajax-paging-using-jquery/">more efficient client side paging by Dave Ward</a>. The sample shows you how to use <a href="http://www.jquery.com/">JQuery</a> to do Ajax callbacks for client side paging using a grid template. After downloading the demo and parsing through it all, I found a lot of things I really liked and even came across a little gotchya with the way ASP.NET serializes dates in JSON.</p>
+<p>One part I really enjoyed about this sample is that your objects on the server are translated into client side objects. So Order.OrderID or Order.ShippingAddress.ShipName would work the same on the client and server side of the programming. The <a href="http://jtemplates.tpython.com/">jtemplates</a> add-in allows you to name your active object of the collection you are looping through a lot like .NET like so:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">    &#123;#foreach $T.d as order&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.OrderID&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipName&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.OrderDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;DateDeserialize($T.order.RequiredDate).format(&#x27;MM/dd/yyyy&#x27;)&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">            &#123;$T.order.ShippingAddress.ShipCountry&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    &#123;#/for&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>As you can see the order object is used in the <a href="http://jtemplates.tpython.com/">jtemplates</a> code just like in .NET code.</p>
+<p>You may have noticed the DateDeserialize() function followed by the extension method .format() in the snipped above. This is due to some date deserialization issues I ran into. The signature for the DateDeserialize method is as so:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">DateDeserialize</span>(<span class="params">dateStr</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">&#x27;new&#x27;</span> + dateStr.<span class="title function_">replace</span>(<span class="regexp">/\//g</span>, <span class="string">&#x27; &#x27;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This method is basically returning the evaluation of the date returned by the .NET framework (ex: &#x2F;Date(894427200000)&#x2F;), replacing the &#x2F; with a space with the keyword &quot;new&quot; in front of it. This will return us a JavaScript Date object. Then I&#39;m using the .format() extension method from the included MSAjax framework. It took me a little while to figure out, but once I did I fell in love. You can&#39;t put a price on full on object-oriented programming!</p>
+<p>Special thanks to <a href="http://www.encosia.com/">Dave Ward</a> for opening my eyes to the power of <a href="http://www.jquery.com/">JQuery</a>!</p>
 <p>Hope this helps!</p>
 
 
@@ -183,7 +189,7 @@
     <hr />
     <h3>comment:</h3>
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 

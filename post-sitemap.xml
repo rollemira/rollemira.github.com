@@ -2,10 +2,11 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://iramellor.com</loc>
+        <loc>https://iramellor.com/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
+
 
     <url>
         <loc>https://iramellor.com/2016/11/16/The-Need-to-Knows-of-Developers/</loc>
@@ -56,6 +57,14 @@
     </url>
 
     <url>
+        <loc>https://iramellor.com/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/</loc>
+        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://iramellor.com/2011/09/19/From-Coder-to-PM-or-Architect/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -81,14 +90,6 @@
 
     <url>
         <loc>https://iramellor.com/2019/03/26/Oracle-Public-Cloud-Instance-Information-Collector/</loc>
-        <lastmod>2024-02-17T04:20:45.874Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://iramellor.com/2009/04/12/Finding-Text-in-SQL-Server-Stored-Procedures/</loc>
         <lastmod>2024-02-17T04:20:45.874Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -144,7 +145,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/</loc>
+        <loc>https://iramellor.com/2016/11/15/Blog-up-and-running-with-Hexo/</loc>
         <lastmod>2024-02-17T04:20:45.873Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -152,7 +153,7 @@
     </url>
 
     <url>
-        <loc>https://iramellor.com/2016/11/15/Blog-up-and-running-with-Hexo/</loc>
+        <loc>https://iramellor.com/2009/06/18/Avoiding-The-Database-Deployment-Nightmare/</loc>
         <lastmod>2024-02-17T04:20:45.873Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

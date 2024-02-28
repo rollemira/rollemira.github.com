@@ -37,7 +37,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
     
@@ -101,7 +101,8 @@
 
 
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Ira Mellor (dot) Com" type="application/atom+xml">
+</head>
 
 
 <body id="top">
@@ -109,7 +110,8 @@
     <!-- Header -->
     <header id="header">
   <div class="inner">
-    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>
+    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
     <ul class="alt menu">
       
       <li><a href="/">Home</a></li>
@@ -118,7 +120,7 @@
       
       <li><a href="/about">About</a></li>
       
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      <li><a href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
       
       <li><a href="/assets/resume.pdf">Resume</a></li>
       
@@ -161,11 +163,11 @@
 
 
 <!-- Content -->
-<h2 id="The-Preface"><a href="#The-Preface" class="headerlink" title="The Preface"></a>The Preface</h2><p>In my time with <a target="_blank" rel="noopener" href="https://cloud.oracle.com/home">Oracle</a>, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers to OCI. This would provide some challenges for current customers as they would require an exercise in taking inventory of their current cloud resources. This would help in capacity planning for their future in Oracle’s cloud. Some customers kept up to date spreadsheets of all their current services in OCI-C, while others were seeking help with a more automated approach at mapping their current OCI-C resources.</p>
-<h2 id="The-Situation"><a href="#The-Situation" class="headerlink" title="The Situation"></a>The Situation</h2><p>I was assigned to help a customer with their capacity planning for migration. They were in need of some information that Oracle couldn’t provide (as it was beyond a security boundary) and other information that could be provided programmatically using the <a target="_blank" rel="noopener" href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsa/rest-endpoints.html">OPC API</a>. I was determined to give this customer the most information that could be provided in an automated fashion. They were specifically interested in their IaaS compute instances and collecting metadata information about them. I figured a simple CLI application could do the trick.</p>
-<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>I was able to cobble together a <a target="_blank" rel="noopener" href="https://nodejs.org">NodeJS</a> application that could be configured with endpoint information, check the user’s credentials and pull all the necessary information down from the API. Once that was done, we could introspect it for the specific information we were looking for and write it to a simple CSV file.</p>
+<h2 id="The-Preface"><a href="#The-Preface" class="headerlink" title="The Preface"></a>The Preface</h2><p>In my time with <a href="https://cloud.oracle.com/home">Oracle</a>, the company shifted it’s course from OCI-Classic to onboarding all new customers, and migrating current customers to OCI. This would provide some challenges for current customers as they would require an exercise in taking inventory of their current cloud resources. This would help in capacity planning for their future in Oracle’s cloud. Some customers kept up to date spreadsheets of all their current services in OCI-C, while others were seeking help with a more automated approach at mapping their current OCI-C resources.</p>
+<h2 id="The-Situation"><a href="#The-Situation" class="headerlink" title="The Situation"></a>The Situation</h2><p>I was assigned to help a customer with their capacity planning for migration. They were in need of some information that Oracle couldn’t provide (as it was beyond a security boundary) and other information that could be provided programmatically using the <a href="https://docs.oracle.com/en/cloud/iaas/compute-iaas-cloud/stcsa/rest-endpoints.html">OPC API</a>. I was determined to give this customer the most information that could be provided in an automated fashion. They were specifically interested in their IaaS compute instances and collecting metadata information about them. I figured a simple CLI application could do the trick.</p>
+<h2 id="The-Solution"><a href="#The-Solution" class="headerlink" title="The Solution"></a>The Solution</h2><p>I was able to cobble together a <a href="https://nodejs.org/">NodeJS</a> application that could be configured with endpoint information, check the user’s credentials and pull all the necessary information down from the API. Once that was done, we could introspect it for the specific information we were looking for and write it to a simple CSV file.</p>
 <p>If you’re on OCI-C and need to collect your own IaaS instance information, hopefully this tool can help you too!</p>
-<h3 id="Click-to-check-the-Repo-out-on-GitHub"><a href="#Click-to-check-the-Repo-out-on-GitHub" class="headerlink" title="Click to check the Repo out on GitHub"></a><a target="_blank" rel="noopener" href="https://github.com/rollemira/opc-instance-data">Click to check the Repo out on GitHub</a></h3>
+<h3 id="Click-to-check-the-Repo-out-on-GitHub"><a href="#Click-to-check-the-Repo-out-on-GitHub" class="headerlink" title="Click to check the Repo out on GitHub"></a><a href="https://github.com/rollemira/opc-instance-data">Click to check the Repo out on GitHub</a></h3>
 
 <!-- Tags -->
 
@@ -182,7 +184,7 @@
     <hr />
     <h3>comment:</h3>
     <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 
 

@@ -33,7 +33,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
     
@@ -97,7 +97,8 @@
 
 
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Ira Mellor (dot) Com" type="application/atom+xml">
+</head>
 
 
 <body id="top">
@@ -105,7 +106,8 @@
     <!-- Header -->
     <header id="header">
   <div class="inner">
-    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>
+    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
     <ul class="alt menu">
       
       <li><a href="/">Home</a></li>
@@ -114,7 +116,7 @@
       
       <li><a href="/about">About</a></li>
       
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      <li><a href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
       
       <li><a href="/assets/resume.pdf">Resume</a></li>
       
@@ -169,12 +171,12 @@
         <blockquote>
 <p>Isn’t the whole point of durable, reliable messaging that we can re-queue a message for processing?<br>– <cite>Me</cite></p>
 </blockquote>
-<h2 id="The-Background"><a href="#The-Background" class="headerlink" title="The Background"></a>The Background</h2><p>I recently got involved in a project using <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/service-bus/">Azure Service Bus</a>. The premise was simple, run service bus queue messages through a <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-webjobs-sdk">WebJob</a> durably and reliably. For this project I ended up using the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Topics</a> feature for a publish/subscribe model. I got the project up and running fairly quickly thanks to the <a target="_blank" rel="noopener" href="https://github.com/Azure/azure-webjobs-sdk">WebJobs SDK</a>. By default the message will be attempted 10 times and then automatically sent to the DeadLetter queue. So to test this, I throw an exception during message processing and sure enough it goes as expected. I now have a message in the DeadLetter queue. In the <a target="_blank" rel="noopener" href="https://portal.azure.com">Azure Management Portal</a> I can see the message exists where it’s supposed to. As of the writing of this article the <a target="_blank" rel="noopener" href="https://portal.azure.com">Azure Management Portal</a> only supports changing the properties of Topics and not managing the messages in them.</p>
+<h2 id="The-Background"><a href="#The-Background" class="headerlink" title="The Background"></a>The Background</h2><p>I recently got involved in a project using <a href="https://azure.microsoft.com/en-us/services/service-bus/">Azure Service Bus</a>. The premise was simple, run service bus queue messages through a <a href="https://github.com/Azure/azure-webjobs-sdk">WebJob</a> durably and reliably. For this project I ended up using the <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions">Topics</a> feature for a publish&#x2F;subscribe model. I got the project up and running fairly quickly thanks to the <a href="https://github.com/Azure/azure-webjobs-sdk">WebJobs SDK</a>. By default the message will be attempted 10 times and then automatically sent to the DeadLetter queue. So to test this, I throw an exception during message processing and sure enough it goes as expected. I now have a message in the DeadLetter queue. In the <a href="https://portal.azure.com/">Azure Management Portal</a> I can see the message exists where it’s supposed to. As of the writing of this article the <a href="https://portal.azure.com/">Azure Management Portal</a> only supports changing the properties of Topics and not managing the messages in them.</p>
 <h2 id="Supplemental-Software"><a href="#Supplemental-Software" class="headerlink" title="Supplemental Software"></a>Supplemental Software</h2><p>What I need is a piece of software that will let me manage the messages in the queue. I could write it myself, but this seems like a task there would be a tool for.</p>
-<p>My first round of searches dug up <a target="_blank" rel="noopener" href="https://github.com/paolosalvatori/ServiceBusExplorer">Service Bus Explorer</a>. It’s a free Service Bus management tool. It looks like a great piece of well thought out management software, <del>but I was unable to get the DeadLetter Repair and Resubmit Message to work properly for me</del>.</p>
-<p><strong>Update</strong>: After a bit of digging about BrokeredMessage serialization I was able to find <a target="_blank" rel="noopener" href="http://stackoverflow.com/a/37798907/87734">this article on StackOverflow explaining how to dictate how Azure Service Bus handles my message content</a>. After implementing that <a target="_blank" rel="noopener" href="https://github.com/paolosalvatori/ServiceBusExplorer">Service Bus Explorer</a> is working like a charm.</p>
-<p>My next round of digging brought me to <a target="_blank" rel="noopener" href="http://www.cerebrata.com/">Azure Management Studio</a>. This is a paid piece of management software that helps manage more than just your Service Bus. This tool was able to properly copy and re-submit the queue message back to it’s Topic of origin. Success!</p>
-<h2 id="Side-Note"><a href="#Side-Note" class="headerlink" title="Side Note"></a>Side Note</h2><p>If Domain Driven Design and Message Queues are highly important to your system, you may want to check out <a target="_blank" rel="noopener" href="https://particular.net/">NServiceBus</a>. I just needed some bolt-on queues for middleware which is why I decided to just tackle queueing on my own.</p>
+<p>My first round of searches dug up <a href="https://github.com/paolosalvatori/ServiceBusExplorer">Service Bus Explorer</a>. It’s a free Service Bus management tool. It looks like a great piece of well thought out management software, <del>but I was unable to get the DeadLetter Repair and Resubmit Message to work properly for me</del>.</p>
+<p><strong>Update</strong>: After a bit of digging about BrokeredMessage serialization I was able to find <a href="http://stackoverflow.com/a/37798907/87734">this article on StackOverflow explaining how to dictate how Azure Service Bus handles my message content</a>. After implementing that <a href="https://github.com/paolosalvatori/ServiceBusExplorer">Service Bus Explorer</a> is working like a charm.</p>
+<p>My next round of digging brought me to <a href="http://www.cerebrata.com/">Azure Management Studio</a>. This is a paid piece of management software that helps manage more than just your Service Bus. This tool was able to properly copy and re-submit the queue message back to it’s Topic of origin. Success!</p>
+<h2 id="Side-Note"><a href="#Side-Note" class="headerlink" title="Side Note"></a>Side Note</h2><p>If Domain Driven Design and Message Queues are highly important to your system, you may want to check out <a href="https://particular.net/">NServiceBus</a>. I just needed some bolt-on queues for middleware which is why I decided to just tackle queueing on my own.</p>
 <p>Happy coding!</p>
 
       

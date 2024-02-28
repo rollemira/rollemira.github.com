@@ -33,7 +33,7 @@
 
     <!--Page Cover-->
     
-        <meta property="og:image" content="undefined"/>
+        <meta property="og:image" content=""/>
     
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic" rel="stylesheet" type="text/css">
     
@@ -97,7 +97,8 @@
 
 
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Ira Mellor (dot) Com" type="application/atom+xml">
+</head>
 
 
 <body id="top">
@@ -105,7 +106,8 @@
     <!-- Header -->
     <header id="header">
   <div class="inner">
-    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
+    <a href="/" class="image avatar"><img src="/images/me.jpg" alt="Ira Mellor" /></a>
+    <h1><strong>Ira Mellor (dot) Com</strong>&nbsp;A developer in the Tampa Bay area of Florida.</h1>
     <ul class="alt menu">
       
       <li><a href="/">Home</a></li>
@@ -114,7 +116,7 @@
       
       <li><a href="/about">About</a></li>
       
-      <li><a target="_blank" rel="noopener" href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
+      <li><a href="https://twitter.com/direct_messages/create/rollemira">Contact</a></li>
       
       <li><a href="/assets/resume.pdf">Resume</a></li>
       
@@ -167,7 +169,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>In a recent situation I was trying to pull some aggregates out of a DataTable using LINQ. I needed to get the rows of the DataTable with a Distinct clause, but my aggregates would be on other columns of the row. The problem is that when you call LINQ’s Distinct() extension method with no arguments, it uses the &quot;default IEqualityComparer&quot;. This means that it will work if you use the Select() extension method, only returning the column you want the distinct on. Well that works great, unless you need more columns from the DataTable.</p>
-<p>The solution here is simple. Write a custom DataRow comparer that compares the DataRow against the column you are trying to put the distinct on. Here is an example:<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonDataRowComparer</span> : <span class="title">IEqualityComparer</span>&lt;<span class="title">DataRow</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> IEqualityComparer&lt;DataRow&gt; Members</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">DataRow x, DataRow y</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (x.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>) == y.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params">DataRow obj</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.ToString().GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>Once we inherit IEqualityComparer&lt;T&gt; (T being the type we want to do the comparison on) all we do is fill in the Equals() and the GetHashCode() methods. In the Equals() method, we just tell the DataRows to compare the fields &quot;PersonID&quot; and return if they are equal. This will tell LINQ if the DataRow is distinct or not.</p>
+<p>The solution here is simple. Write a custom DataRow comparer that compares the DataRow against the column you are trying to put the distinct on. Here is an example:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonDataRowComparer</span> : <span class="title">IEqualityComparer</span>&lt;<span class="title">DataRow</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">#<span class="keyword">region</span> IEqualityComparer&lt;DataRow&gt; Members</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">Equals</span>(<span class="params">DataRow x, DataRow y</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> (x.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>) == y.Field&lt;<span class="built_in">int</span>&gt;(<span class="string">&quot;PersonID&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">GetHashCode</span>(<span class="params">DataRow obj</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.ToString().GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">#<span class="keyword">endregion</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Once we inherit IEqualityComparer&lt;T&gt; (T being the type we want to do the comparison on) all we do is fill in the Equals() and the GetHashCode() methods. In the Equals() method, we just tell the DataRows to compare the fields &quot;PersonID&quot; and return if they are equal. This will tell LINQ if the DataRow is distinct or not.</p>
 <p>Hope this helps!</p>
 
       
