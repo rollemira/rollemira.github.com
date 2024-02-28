@@ -2096,6 +2096,10 @@ ul.menu li .icon:before {
     font-size: 1.5em;
 }
 
+ul.menu li a {
+    border-bottom: 1px solid #FFF;
+}
+
 ul.menu {
     cursor: default;
     list-style: none;
@@ -2559,7 +2563,7 @@ input[type="button"]:disabled,
 
 #header .image.avatar {
     margin: 0 0 1em 0;
-    width: 6.25em;
+    width: 9em;
 }
 
 #header a {
@@ -2567,7 +2571,7 @@ input[type="button"]:disabled,
     -webkit-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    border-bottom: solid 1px;
+    /* border-bottom: solid 1px; */
     color: #ffffff;
     text-decoration: none;
 }
